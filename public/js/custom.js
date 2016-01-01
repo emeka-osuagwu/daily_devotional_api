@@ -22,3 +22,9 @@ function deleteContentAlert(id, url)
 	}
 	});
 }
+
+
+function emeka() {
+	$('.summernote').innerHTML()
+	console.log($('.summernote').innerHTML())
+}

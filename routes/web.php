@@ -17,6 +17,8 @@ Route::group(['prefix' => '/'], function () {
 	
 	Route::get('devotions', 'Web\DevotionController@getDevotions');
 	Route::group(['prefix' => 'devotion'], function () {
+		Route::get('create', 'Web\DevotionController@getCreateDevotion');
+		Route::post('create', 'Web\DevotionController@postCreateDevotion');
 		Route::get('{id}', 'Web\DevotionController@getDevotion');
 		Route::get('{id}/delete', 'Web\DevotionController@deleteDevotion');
 	});

@@ -21,4 +21,5 @@
             
         </main>
     </body>
+    @include('admin.includes.sections.script')
 </html>

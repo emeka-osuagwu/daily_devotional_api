@@ -28,6 +28,16 @@ class DevotionController extends Controller
 		$this->devotionService = $devotionService;
 	}
 	
+	public function getCreateDevotion(Request $request)
+	{
+		return view('admin.pages.create_devotion');
+	}
+
+	public function postCreateDevotion(Request $request)
+	{
+		return $request->all();
+	}
+
 	public function getDevotions()
 	{
 		$devotions = $this->devotionService->getPaginated(30);

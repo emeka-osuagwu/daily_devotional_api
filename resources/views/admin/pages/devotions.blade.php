@@ -3,30 +3,10 @@
 @section('title', 'Login')
 
 @section('content')
-	
+
 	<div class="page-inner">
 		<div id="main-wrapper" class="container">
 			<div class="row m-t-md">
-				<div class="col-md-12">
-					<div class="row mailbox-header">
-						<div class="col-md-2">
-							<a href="compose.html" class="btn btn-success btn-block">Compose</a>
-						</div>
-						<div class="col-md-6">
-							<h2></h2>
-						</div>
-						<div class="col-md-4">
-							<form action="#" method="GET">
-								<div class="input-group">
-									<input type="text" name="search" class="form-control input-search" placeholder="Search...">
-									<span class="input-group-btn">
-										<button class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
-									</span>
-								</div><!-- Input Group -->
-							</form>
-					   </div>
-					</div>
-				</div>
 				@include('admin.includes.contents.devotion_side_nav')
 				<div class="col-md-10">
 					<div class="panel panel-white">
