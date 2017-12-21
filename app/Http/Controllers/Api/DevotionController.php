@@ -24,9 +24,14 @@ class DevotionController extends Controller
 		$this->devotionValidation = $devotionValidation;
 	}
 
-	public function viewDevotionCategory($value='')
+	public function viewDevotionCategory($id)
 	{
-		# code...
+		$response_data = [
+			'data' => $this->devotionService->getDevotionCategoryWhere('id', $id)->get(),
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
 	}
 
 	public function viewDevotionCategories()
@@ -107,24 +112,76 @@ class DevotionController extends Controller
 		return sendResponse($response_data, 200);
 	}
 
-	public function updateDevotion($value='')
+	public function updateDevotionCagetory(Request $request, $id)
 	{
-		# code...
+		$validator = $this->devotionValidation->updateDovation($request->all(), $id);
+
+		if ($validator->fails()) 
+		{
+			$response_data = [
+				'data' => $validator->errors(),
+				'status' => 400
+			];
+
+			return sendResponse($response_data, 400);
+		}
+
+		$this->devotionService->updateDevotionCategory($request, (int) $request->id);
+
+		$response_data = [
+			'message' => 'devotion category updated',
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);	
 	}
 
-	public function updateDevotionCagetory($value='')
+	public function updateDevotion(Request $request, $id)
 	{
-		# code...
+		$validator = $this->devotionValidation->updateDovation($request->all(), $id);
+
+		if ($validator->fails()) 
+		{
+			$response_data = [
+				'data' => $validator->errors(),
+				'status' => 400
+			];
+
+			return sendResponse($response_data, 400);
+		}
+
+		$this->devotionService->updateDevotion($request, (int) $request->id);
+
+		$response_data = [
+			'message' => 'devotion updated',
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);	
 	}
 
-	public function deleteDevotion($value='')
+	public function deleteDevotion($id)
 	{
-		# code...
+		$this->devotionService->deleteDevotion($id);
+
+		$response_data = [
+			'message' => 'devotion deleted',
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
 	}
 
-	public function deleteDevotionCategory($value='')
+	public function deleteDevotionCategory($id)
 	{
-		# code...
+		$this->devotionService->deleteDevotionCategory($id);
+
+		$response_data = [
+			'message' => 'devotion category deleted',
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
 	}
 
 	public function favoriteDovotion($value='')

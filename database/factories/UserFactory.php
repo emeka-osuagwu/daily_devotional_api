@@ -31,6 +31,7 @@ $factory->define(App\Models\Devotion::class, function (Faker $faker) {
         'description' => $faker->name,
         'body' => $faker->name,
         'confession' => $faker->name,
+        'cover_image' => $faker->name,
         'prayer' => $faker->name,
         'further_reading' => $faker->name,
         'bible_verse' => $faker->name,
