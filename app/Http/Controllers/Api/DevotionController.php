@@ -79,4 +79,9 @@ class DevotionController extends Controller
 	{
 		# code...
 	}
+
+	public function bulkUploadDevotion()
+	{
+		# code...
+	}
 }
