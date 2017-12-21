@@ -6,18 +6,22 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 
 use App\Http\Services\DevotionService;
+use App\Http\Validations\DevotionValidation;
 
 class DevotionController extends Controller
 {
 
 	protected $devotionService;
+	protected $devotionValidation;
 
 	public function __construct
 	(
-		DevotionService $deleteDevotion 
+		DevotionService $devotionService,
+		DevotionValidation $devotionValidation 
 	)
 	{
-		$this->devotionService = $deleteDevotion;
+		$this->devotionService = $devotionService;
+		$this->devotionValidation = $devotionValidation;
 	}
 
 	public function viewDevotionCategory($value='')
@@ -25,9 +29,14 @@ class DevotionController extends Controller
 		# code...
 	}
 
-	public function viewDevotionCategories($value='')
+	public function viewDevotionCategories()
 	{
-		# code...
+		$response_data = [
+			'data' => $this->devotionService->getCategories(),
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
 	}
 
 	public function viewDevotion($value='')
@@ -37,12 +46,36 @@ class DevotionController extends Controller
 
 	public function viewDevotions()
 	{
-		return $this->devotionService->getAll();
+		$response_data = [
+			'data' => $this->devotionService->getAll(),
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
 	}
 
-	public function createDevotionCategory($value='')
+	public function createDevotionCategory(Request $request)
 	{
-		# code...
+		$validator = $this->devotionValidation->createDovationCategory($request->all());
+
+		if ($validator->fails()) 
+		{
+			$response_data = [
+				'data' => $validator->errors(),
+				'status' => 400
+			];
+
+			return sendResponse($response_data, 400);
+		}
+
+		$this->devotionService->createDovotionCategory($request);
+		
+		$response_data = [
+			'status' => 200,
+			'message' => 'category created'
+		];
+
+		return sendResponse($response_data, 200);
 	}
 
 	public function createDevotion($value='')

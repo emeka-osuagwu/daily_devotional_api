@@ -4,9 +4,16 @@ namespace App\Http\Services;
 
 use Excel;
 use App\Models\Devotion;
+use App\Models\Category;
+use App\Http\Services\FileUploadService;
 
 class DevotionService
 {
+
+	public function __construct()
+	{
+		$this->fileUploadService = new FileUploadService;
+	}
 
 	/*
 	|--------------------------------------------------------------------------
@@ -45,15 +52,31 @@ class DevotionService
 
 		return true;
 	}
+
 	/*
 	|--------------------------------------------------------------------------
 	| Category
 	|--------------------------------------------------------------------------
 	*/
-
-	public function createDovotionCategery($data)
+	public function createDovotionCategory($data)
 	{
-		return $data;
+
+		if (isset($data['cover_image']) && $data['cover_image'] != null)
+		{
+		    $create['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
+		}
+
+		$create = [
+			'title' => $data['title'],
+			'description' => $data['description']
+		];
+
+		return Category::create($create);
+	}
+
+	public function getCategories()
+	{
+		return Category::all();
 	}
 
 }

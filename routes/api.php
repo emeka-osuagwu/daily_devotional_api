@@ -17,8 +17,15 @@ Route::group(['prefix' => 'v1'], function () {
 	Route::get('devotions', 'Api\DevotionController@viewDevotions');
 	
 	Route::group(['prefix' => 'devotion'], function () {
-		Route::get('/', 'Api\UserController@welcome');
+		
+		Route::get('categories', 'Api\DevotionController@viewDevotionCategories');
+		Route::group(['prefix' => 'category'], function () {
+			Route::post('create', 'Api\DevotionController@createDevotionCategory');			
+		});	
+
 		Route::post('upload', 'Api\DevotionController@bulkUploadDevotion');
+
+	
 	});
 
 });

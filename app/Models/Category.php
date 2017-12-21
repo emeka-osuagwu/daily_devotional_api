@@ -6,8 +6,10 @@ use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Devotion extends Model
+class Category extends Model
 {
+    protected $table = 'categories';
+
 	protected $fillable = [
 		'title',
 		'description',
