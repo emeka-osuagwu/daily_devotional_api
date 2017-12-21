@@ -39,9 +39,14 @@ class DevotionController extends Controller
 		return sendResponse($response_data, 200);
 	}
 
-	public function viewDevotion($value='')
+	public function viewDevotion($id)
 	{
-		return  [];	
+		$response_data = [
+			'data' => $this->devotionService->getDevotionWhere('id', $id)->get(),
+			'status' => 200
+		];	
+
+		return sendResponse($response_data, 200);
 	}
 
 	public function viewDevotions()
@@ -78,9 +83,28 @@ class DevotionController extends Controller
 		return sendResponse($response_data, 200);
 	}
 
-	public function createDevotion($value='')
+	public function createDevotion(Request $request)
 	{
-		# code...
+		$validator = $this->devotionValidation->createDovation($request->all());
+
+		if ($validator->fails()) 
+		{
+			$response_data = [
+				'data' => $validator->errors(),
+				'status' => 400
+			];
+
+			return sendResponse($response_data, 400);
+		}
+
+		$this->devotionService->createDevotion($request);
+		
+		$response_data = [
+			'message' => 'contented created',
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
 	}
 
 	public function updateDevotion($value='')

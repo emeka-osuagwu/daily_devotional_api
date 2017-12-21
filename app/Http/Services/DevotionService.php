@@ -25,6 +25,23 @@ class DevotionService
 		return Devotion::all();		
 	}
 
+	public function createDevotion($data)
+	{
+		$create = $data->all();
+
+		if ($data->has('cover_image'))
+		{
+		    $create['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
+		}		
+
+		Devotion::create($create);
+	}
+
+	public function getDevotionWhere($field, $value)
+	{
+		return Devotion::where($field, $value);
+	}
+
 	public function bulkUploadDevotion($file)
 	{
 		Excel::load($file, function($reader) {
@@ -60,15 +77,15 @@ class DevotionService
 	*/
 	public function createDovotionCategory($data)
 	{
-		if (isset($data['cover_image']) && $data['cover_image'] != null)
-		{
-		    $create['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
-		}
-
 		$create = [
 			'title' => $data['title'],
 			'description' => $data['description']
 		];
+
+		if ($data->has('cover_image'))
+		{
+		    $create['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
+		}
 
 		return Category::create($create);
 	}

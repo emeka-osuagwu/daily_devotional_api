@@ -18,6 +18,9 @@ Route::group(['prefix' => 'v1'], function () {
 	
 	Route::group(['prefix' => 'devotion'], function () {
 		
+		Route::get('{id}', 'Api\DevotionController@viewDevotion');
+		Route::post('create', 'Api\DevotionController@createDevotion');
+		
 		Route::get('categories', 'Api\DevotionController@viewDevotionCategories');
 		Route::group(['prefix' => 'category'], function () {
 			Route::post('create', 'Api\DevotionController@createDevotionCategory');			
