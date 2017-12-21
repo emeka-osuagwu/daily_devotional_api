@@ -82,6 +82,13 @@ class DevotionController extends Controller
 
 	public function bulkUploadDevotion(Request $request)
 	{
-		return $this->devotionService->bulkUploadDevotion($request->file('file'));
+		$this->devotionService->bulkUploadDevotion($request->file('file'));
+
+		$response_data = [
+			'status' => 200,
+			'message' => 'upload successful'
+		];
+
+		return sendResponse($response_data, 200);
 	}
 }
