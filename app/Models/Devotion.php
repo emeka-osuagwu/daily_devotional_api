@@ -14,16 +14,21 @@ class Devotion extends Model
 		'content_url',
 		'content_id',
 
+		'title',
 		'cover_image',
 		'description',
 		'body',
 		'confession',
+		'prayer',
 		'further_reading',
-		'bible_verse'
+		'bible_verse',
+		
+		'category_id',
 	];
 
 	public function getCreatedAtAttribute($value)
 	{
+		
 	    return Carbon::parse($value)->diffForHumans();
 	}
 

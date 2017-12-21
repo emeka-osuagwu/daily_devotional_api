@@ -20,6 +20,7 @@ class CreateDevotionsTable extends Migration
             $table->string('content_url')->nullable();
             $table->string('content_id')->nullable();
             
+            $table->string('title')->unique();
             $table->string('cover_image')->nullable();
             $table->string('description');
             $table->string('body');
@@ -27,6 +28,7 @@ class CreateDevotionsTable extends Migration
             $table->string('prayer');
             $table->string('further_reading');
             $table->string('bible_verse');
+            $table->integer('category_id');
 
             $table->timestamps();
         });

@@ -80,8 +80,8 @@ class DevotionController extends Controller
 		# code...
 	}
 
-	public function bulkUploadDevotion()
+	public function bulkUploadDevotion(Request $request)
 	{
-		# code...
+		return $this->devotionService->bulkUploadDevotion($request->file('file'));
 	}
 }
