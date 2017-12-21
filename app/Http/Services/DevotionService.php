@@ -7,6 +7,12 @@ use App\Models\Devotion;
 
 class DevotionService
 {
+
+	/*
+	|--------------------------------------------------------------------------
+	| Devotion
+	|--------------------------------------------------------------------------
+	*/
 	public function getAll()
 	{
 		return Devotion::all();		
@@ -14,11 +20,9 @@ class DevotionService
 
 	public function bulkUploadDevotion($file)
 	{
-
 		Excel::load($file, function($reader) {
 
 			$reader->each(function($sheet) {
-
 				$data = [
 					"type" => trim($sheet['type']),
 					"content_url" => trim($sheet['content_url']),
@@ -35,15 +39,21 @@ class DevotionService
 					
 					"category_id" => trim($sheet['category_id']),
 				];
-
 				Devotion::create($data);
-
 			});
-
 		})->get();
 
 		return true;
-		
+	}
+	/*
+	|--------------------------------------------------------------------------
+	| Category
+	|--------------------------------------------------------------------------
+	*/
+
+	public function createDovotionCategery($data)
+	{
+		return $data;
 	}
 
 }
