@@ -14,6 +14,10 @@ use Illuminate\Http\Request;
 */
 Route::group(['prefix' => 'v1'], function () {
 
-	Route::get('/', 'Api\UserController@welcome');
+	
+	Route::get('devotions', 'Api\DevotionController@viewDevotions');
+	Route::group(['prefix' => 'devotion'], function () {
+		Route::get('/', 'Api\UserController@welcome');
+	});
 
 });
