@@ -13,13 +13,34 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
-    static $password;
+// $factory->define(App\User::class, function (Faker $faker) {
+//     static $password;
 
+//     return [
+//         'name' => $faker->name,
+//         'email' => $faker->unique()->safeEmail,
+//         'password' => $password ?: $password = bcrypt('secret'),
+//         'remember_token' => str_random(10),
+//     ];
+// });
+
+$factory->define(App\Models\Devotion::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'type' => 'text',
+        'title' => $faker->name,
+        'description' => $faker->name,
+        'body' => $faker->name,
+        'confession' => $faker->name,
+        'prayer' => $faker->name,
+        'further_reading' => $faker->name,
+        'bible_verse' => $faker->name,
+        'category_id' => rand(1, 10),
+    ];
+});
+
+$factory->define(App\Models\Category::class, function (Faker $faker) {
+    return [
+        'title' => $faker->name,
+        'description' => $faker->name,
     ];
 });

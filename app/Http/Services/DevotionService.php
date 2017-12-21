@@ -60,7 +60,6 @@ class DevotionService
 	*/
 	public function createDovotionCategory($data)
 	{
-
 		if (isset($data['cover_image']) && $data['cover_image'] != null)
 		{
 		    $create['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
