@@ -28,13 +28,13 @@ $factory->define(App\Models\Devotion::class, function (Faker $faker) {
     return [
         'type' => 'text',
         'title' => $faker->name,
-        'description' => $faker->name,
-        'body' => $faker->name,
-        'confession' => $faker->name,
+        'description' => $faker->text($maxNbChars = 100),
+        'body' => $faker->text($maxNbChars = 1000),
+        'confession' => $faker->text($maxNbChars = 200),
         'cover_image' => $faker->imageUrl('cats'),
-        'prayer' => $faker->name,
-        'further_reading' => $faker->name,
-        'bible_verse' => $faker->name,
+        'prayer' => $faker->text($maxNbChars = 200),
+        'further_reading' => $faker->text($maxNbChars = 100),
+        'bible_verse' => $faker->text($maxNbChars = 100),
         'category_id' => rand(1, 10),
     ];
 });
@@ -42,7 +42,7 @@ $factory->define(App\Models\Devotion::class, function (Faker $faker) {
 $factory->define(App\Models\Category::class, function (Faker $faker) {
     return [
         'title' => $faker->name,
-        'description' => $faker->name,
+        'description' => $faker->text($maxNbChars = 100),
         'cover_image' => $faker->imageUrl('cats')
     ];
 });
