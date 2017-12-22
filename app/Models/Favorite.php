@@ -11,7 +11,7 @@ class Devotion extends Model
 {
     
 	protected $fillable = [
-		'type',
+		'user_id',
 		'content_url',
 		'content_id',
 
@@ -26,19 +26,5 @@ class Devotion extends Model
 		
 		'category_id',
 	];
-
-	protected $appends = [
-		'category'
-	];
-
-	public function getCreatedAtAttribute($value)
-	{
-	    return Carbon::parse($value)->diffForHumans();
-	}
-
-	public function getCategoryAttribute()
-	{ 
-		return Category::where('id', $this->category_id)->first();
-	}
 
 }

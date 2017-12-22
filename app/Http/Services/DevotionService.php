@@ -9,12 +9,6 @@ use App\Http\Services\FileUploadService;
 
 class DevotionService
 {
-
-	public function __construct()
-	{
-		$this->fileUploadService = new FileUploadService;
-	}
-
 	/*
 	|--------------------------------------------------------------------------
 	| Devotion
@@ -55,7 +49,7 @@ class DevotionService
 
 	public function deleteDevotion($id)
 	{
-		Category::destroy($id);
+		Devotion::destroy($id);
 	}
 
 	public function bulkUploadDevotion($file)
