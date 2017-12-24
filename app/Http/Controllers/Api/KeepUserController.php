@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class KeepUserController extends Controller
 {
 	public function welcome()
 	{

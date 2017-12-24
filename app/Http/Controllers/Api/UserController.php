@@ -5,10 +5,37 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 
+use App\Http\Services\UserService;
+
 class UserController extends Controller
 {
-	public function welcome()
+	protected $userService;
+
+	public function __construct
+	(
+		UserService $userService
+	)
 	{
-		return "welcome to devotion version 1 api";
+		$this->userService = $userService;
+	}
+
+	public function getAllUser()
+	{
+		$response_data = [
+			'data' => $this->userService->getAllUser(),
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
+	}
+
+	public function getUser($id)
+	{
+		$response_data = [
+			'data' => $this->userService->getUserBy('id', $id)->get(),
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
 	}
 }

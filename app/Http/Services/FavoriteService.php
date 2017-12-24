@@ -4,7 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\Devotion;
 
-class DevotionService
+class FavoriteService
 {
 
 	public function favoriteDevtions($value='')
