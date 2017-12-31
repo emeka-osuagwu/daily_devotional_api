@@ -17,7 +17,7 @@ class CreateDevotionCategory extends Migration
             $table->increments('id');
             
             $table->string('title')->unique();
-            $table->string('description', 500);
+            $table->string('description', 500)->nullable();
             $table->string('cover_image')->nullable();
 
             $table->timestamps();
