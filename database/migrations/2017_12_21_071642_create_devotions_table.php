@@ -20,14 +20,14 @@ class CreateDevotionsTable extends Migration
             $table->string('content_url')->nullable();
             $table->string('content_id')->nullable();
             
-            $table->string('title')->unique();
+            $table->string('title');
             $table->string('cover_image')->nullable();
-            $table->string('description', 500);
-            $table->string('body', 2000);
-            $table->string('confession', 500);
-            $table->string('prayer', 500);
-            $table->string('further_reading', 500);
-            $table->string('bible_verse', 500);
+            $table->longText('description', 20000);
+            $table->longText('body', 20000);
+            $table->longText('confession', 20000);
+            $table->longText('prayer', 20000);
+            $table->longText('further_reading', 20000);
+            $table->longText('bible_verse', 20000);
             $table->integer('category_id');
 
             $table->timestamps();

@@ -52,18 +52,18 @@ class DevotionService
 		Devotion::destroy($id);
 	}
 
-	public function bulkUploadDevotion($file)
+	public function bulkUploadDevotion($file, $category)
 	{
 		Excel::load($file, function($reader) {
 
 			$reader->each(function($sheet) {
 				$data = [
-					"type" => trim($sheet['type']),
+					"type" => 'text',
 					"content_url" => trim($sheet['content_url']),
-					"content_id" => trim($sheet['content_id']),
+					"content_id" => null,
 					
 					"title" => trim($sheet['title']),
-					"cover_image" => trim($sheet['cover_image']),
+					"cover_image" => null,
 					"description" => trim($sheet['description']),
 					"body" => trim($sheet['body']),
 					"confession" => trim($sheet['confession']),
@@ -71,9 +71,20 @@ class DevotionService
 					"further_reading" => trim($sheet['further_reading']),
 					"bible_verse" => trim($sheet['bible_verse']),
 					
-					"category_id" => trim($sheet['category_id']),
+					"category_id" => rand(1, 2),
 				];
 				Devotion::create($data);
+			});
+		})->get();
+
+		Excel::load($category, function($reader) {
+			$reader->each(function($sheet) {
+				$data = [
+					"title" => trim($sheet['title']),
+					"description" => trim($sheet['description']),
+					"cover_image" => Url('pic') . '/' . trim($sheet['cover_image']) . '.jpeg',
+				];
+				Category::create($data);
 			});
 		})->get();
 

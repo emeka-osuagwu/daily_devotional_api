@@ -191,12 +191,14 @@ class DevotionController extends Controller
 
 	public function unfavoriteDovotion($value='')
 	{
-		# code...
 	}
 
 	public function bulkUploadDevotion(Request $request)
 	{
-		$this->devotionService->bulkUploadDevotion($request->file('file'));
+		$file = public_path('file.xlsx');
+		$category = public_path('category.xlsx');
+		
+		$this->devotionService->bulkUploadDevotion($file, $category);
 
 		$response_data = [
 			'status' => 200,
