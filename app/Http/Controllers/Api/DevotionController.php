@@ -26,7 +26,7 @@ class DevotionController extends Controller
 
 	public function getBackInfo()
 	{
-		$devotions = $this->devotionService->getAll()->take(1);
+		$devotions = $this->devotionService->getAll()->first();
 		$categories = $this->devotionService->getCategories();
 
 		$response_data = [
