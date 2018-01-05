@@ -41,4 +41,9 @@ class Devotion extends Model
 		return Category::where('id', $this->category_id)->first();
 	}
 
+	public function category()
+	{
+	    return $this->belongsTo('App\Models\Category', 'id');
+	}
+
 }

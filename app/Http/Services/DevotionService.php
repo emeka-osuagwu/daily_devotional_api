@@ -118,7 +118,7 @@ class DevotionService
 
 	public function getDevotionCategoryWhere($field, $value)
 	{
-		return Category::where($field, $value);
+		return Category::with('devotions')->where($field, $value);
 	}
 
 	public function deleteDevotionCategory($id)

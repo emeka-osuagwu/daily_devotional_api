@@ -20,4 +20,9 @@ class Category extends Model
 	{
 	    return Carbon::parse($value)->diffForHumans();
 	}
+
+	public function devotions()
+	{
+	    return $this->hasMany('App\Models\Devotion', 'category_id')->take(10);
+	}
 }

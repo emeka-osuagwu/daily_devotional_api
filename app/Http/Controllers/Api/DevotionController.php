@@ -46,7 +46,7 @@ class DevotionController extends Controller
 			'data' => $this->devotionService->getDevotionCategoryWhere('id', $id)->get(),
 			'status' => 200
 		];
-
+		
 		return sendResponse($response_data, 200);
 	}
 
