@@ -24,6 +24,22 @@ class DevotionController extends Controller
 		$this->devotionValidation = $devotionValidation;
 	}
 
+	public function getBackInfo()
+	{
+		$devotions = $this->devotionService->getAll()->take(1);
+		$categories = $this->devotionService->getCategories();
+
+		$response_data = [
+			'data' => [
+				"active" => $devotions, 
+				"categories" => $categories
+			],
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
+	}
+
 	public function viewDevotionCategory($id)
 	{
 		$response_data = [
