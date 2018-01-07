@@ -35,4 +35,10 @@ Route::group(['prefix' => 'v1'], function () {
 		Route::post('upload', 'Api\DevotionController@bulkUploadDevotion');
 	});
 
+	Route::get('notes', 'Api\NoteController@getAllNotes');
+	Route::group(['prefix' => 'note'], function () {
+		Route::post('create', 'Api\NoteController@addNote');
+		Route::post('{id}/update', 'Api\NoteController@updateNote');
+	});
+
 });
