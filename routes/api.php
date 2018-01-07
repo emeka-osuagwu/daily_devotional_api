@@ -14,8 +14,9 @@ Route::group(['prefix' => 'v1'], function () {
 	Route::get('users', 'Api\UserController@getAllUser');
 	Route::get('user/{id}', 'Api\UserController@getUser');
 	
-	Route::get('devotions', 'Api\DevotionController@viewDevotions');
+	Route::post('send-message', 'Api\UserController@sendFeedback');
 	
+	Route::get('devotions', 'Api\DevotionController@viewDevotions');
 	Route::group(['prefix' => 'devotion'], function () {
 		
 		Route::get('basic', 'Api\DevotionController@getBackInfo');
