@@ -21,6 +21,7 @@ Route::group(['prefix' => 'v1'], function () {
 		Route::get('basic', 'Api\DevotionController@getBackInfo');
 		Route::get('categories', 'Api\DevotionController@viewDevotionCategories');
 		Route::get('{id}', 'Api\DevotionController@viewDevotion');
+		Route::get('date/{date}', 'Api\DevotionController@viewDevotionDay');
 		Route::post('{id}/update', 'Api\DevotionController@updateDevotion');
 		Route::post('create', 'Api\DevotionController@createDevotion');
 		Route::get('{id}/delete', 'Api\DevotionController@deleteDevotion');			

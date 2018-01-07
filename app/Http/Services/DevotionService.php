@@ -91,6 +91,11 @@ class DevotionService
 		return true;
 	}
 
+	public function findByDate($date)
+	{
+		return Devotion::all();
+	}
+
 	/*
 	|--------------------------------------------------------------------------
 	| Category

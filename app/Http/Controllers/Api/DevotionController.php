@@ -10,7 +10,6 @@ use App\Http\Validations\DevotionValidation;
 
 class DevotionController extends Controller
 {
-
 	protected $devotionService;
 	protected $devotionValidation;
 
@@ -203,6 +202,16 @@ class DevotionController extends Controller
 	public function favoriteDovotion($value='')
 	{
 		# code...
+	}
+
+	public function viewDevotionDay($date)
+	{
+		$response_data = [
+			'data' => $this->devotionService->findByDate($date)->random(1),
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
 	}
 
 	public function unfavoriteDovotion($value='')
