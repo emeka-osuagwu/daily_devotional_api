@@ -37,8 +37,10 @@ Route::group(['prefix' => 'v1'], function () {
 
 	Route::get('notes', 'Api\NoteController@getAllNotes');
 	Route::group(['prefix' => 'note'], function () {
+		Route::get('{id}', 'Api\NoteController@getNote');
 		Route::post('create', 'Api\NoteController@addNote');
 		Route::post('{id}/update', 'Api\NoteController@updateNote');
+		Route::get('{id}/delete', 'Api\NoteController@deleteNote');
 	});
 
 });

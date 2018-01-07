@@ -41,9 +41,14 @@ class NoteController extends Controller
 		return sendResponse($response_data, 200);
 	}
 
-	public function getNote($value='')
+	public function getNote($id)
 	{
-		# code...
+		$response_data = [
+			"data" => $this->noteService->getNoteBy('id', $id)->get(),
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
 	}
 
 	public function addNote(Request $request)
@@ -94,5 +99,13 @@ class NoteController extends Controller
 
 	public function deleteNote($id)
 	{
+		$this->noteService->deleteNote($id);
+
+		$response_data = [
+			'message' => 'note deleted',
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
 	}
 }

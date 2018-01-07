@@ -30,7 +30,6 @@ class NoteValidation
 
 		return $validator;
 	}
-
 }
 
 ?>
