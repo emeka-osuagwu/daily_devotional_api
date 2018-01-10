@@ -16,6 +16,7 @@ Route::group(['prefix' => 'v1'], function () {
 	
 	Route::group(['prefix' => 'user'], function () {
 		Route::post('add', 'Api\UserController@addUser');
+		Route::get('{token}/notes', 'Api\NoteController@getUserNotes');
 	});
 	
 	Route::post('send-message', 'Api\UserController@sendFeedback');

@@ -51,6 +51,11 @@ class NoteController extends Controller
 		return sendResponse($response_data, 200);
 	}
 
+	public function getUserNotes($token)
+	{
+		return $this->noteService->getNoteBy('user_id', $token)->get();
+	}
+
 	public function addNote(Request $request)
 	{
 		$validator = $this->noteValidation->createNote($request->all());
