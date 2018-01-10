@@ -22,7 +22,8 @@ class CreateUsersTable extends Migration
             
             $table->enum('role', ['admin', 'user'])->default('user');    
             $table->enum('profile_status', ['active', 'pending'])->default('pending');    
-            $table->enum('account_type', ['regular', 'social_auth'])->default('regular');    
+            $table->enum('account_type', ['regular', 'social_auth'])->default('social_auth');    
+            $table->string('platform_name')->nullable();    
             
             $table->string('email')->unique();
             $table->string('password');

@@ -16,6 +16,11 @@ class UserService
 		return User::where($field, $value);
 	}
 
+	public function addUser($data)
+	{
+		# code...
+	}
+
 	public function sendMessage($data)
 	{
 	    Mail::send('emails.user.reset_password_link', ['data' => $data], function ($message) use ($data) {

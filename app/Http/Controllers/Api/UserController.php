@@ -43,6 +43,11 @@ class UserController extends Controller
 		return sendResponse($response_data, 200);
 	}
 
+	public function addUser(Request $request)
+	{
+		return $request->all();
+	}
+
 	public function sendFeedback(Request $request)
 	{
 		$this->mailService->sendMessage($request->all());
