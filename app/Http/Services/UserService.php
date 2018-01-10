@@ -18,7 +18,28 @@ class UserService
 
 	public function addUser($data)
 	{
-		# code...
+		$user_check = $this->getUserBy('oauth', $data['oauth'])->get()->count();
+		
+		if ($user_check > 0) 
+		{
+			return 'user exist';
+		}
+		else
+		{
+			$create = [
+				'email' => $data['email'],
+				'oauth' => $data['oauth'],
+				'image' => $data['image'],
+				'name' => $data['name'],
+				'password' => bcrypt($data['oauth']),
+				'platform_name' => $data['platform_name'],
+				'account_type' => $data['account_type']
+			];
+
+			User::create($create);
+
+			return 'user create';
+		}
 	}
 
 	public function sendMessage($data)
