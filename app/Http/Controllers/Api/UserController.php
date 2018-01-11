@@ -45,7 +45,6 @@ class UserController extends Controller
 
 	public function addUser(Request $request)
 	{
-		return $request->all();
 		$response_data = [
 			'message' => $this->userService->addUser($request->all()),
 			'status' => 200
