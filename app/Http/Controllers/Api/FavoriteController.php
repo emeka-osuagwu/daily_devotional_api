@@ -49,6 +49,9 @@ class FavoriteController extends Controller
 		return sendResponse($response_data, 200);
 	}
 
+
+	
+
 	public function unfavoriteDevtion($id)
 	{
 		$this->favoriteService->unfavoriteDevtion($id);
