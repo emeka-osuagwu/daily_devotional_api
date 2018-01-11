@@ -36,6 +36,11 @@ class DevotionService
 		return Devotion::where($field, $value);
 	}
 
+	public function getDevotionWhereIn($field, $values)
+	{
+		return Devotion::whereIn($field, $values);
+	}
+
 	public function updateDevotion($data, $id)
 	{
 		$create = $data->all(); 

@@ -25,7 +25,7 @@ Route::group(['prefix' => 'v1'], function () {
 	
 	Route::get('devotions', 'Api\DevotionController@viewDevotions');
 	Route::group(['prefix' => 'devotion'], function () {
-		
+		Route::post('{id}/like', 'Api\FavoriteController@likeDevotion');
 		Route::get('basic', 'Api\DevotionController@getBackInfo');
 		Route::get('categories', 'Api\DevotionController@viewDevotionCategories');
 		Route::get('{id}', 'Api\DevotionController@viewDevotion');
