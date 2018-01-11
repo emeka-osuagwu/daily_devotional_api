@@ -53,7 +53,12 @@ class NoteController extends Controller
 
 	public function getUserNotes($token)
 	{
-		return $this->noteService->getNoteBy('user_id', $token)->get();
+		$response_data = [
+			'data' => $this->noteService->getNoteBy('user_id', $token)->get(),
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
 	}
 
 	public function addNote(Request $request)

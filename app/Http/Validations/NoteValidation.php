@@ -11,7 +11,7 @@ class NoteValidation
 		$validator = Validator::make($data, [
 			'title'	=> 'required|unique:notes|string',
 			'note' => 'required|string',
-			'user_id' => 'required|integer',
+			'user_id' => 'required',
 		]);
 
 		return $validator;

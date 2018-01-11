@@ -2,24 +2,18 @@
 
 namespace App\Http\Services;
 
-use App\Models\Devotion;
+use App\Models\Favorite;
 
 class FavoriteService
 {
-
-	public function favoriteDevtions($value='')
+	public function getFavoritesBy($field, $value)
 	{
-		# code...
+		return Favorite::where($field, $value);
 	}
 
-	public function favoriteDevtion($value='')
+	public function unfavoriteDevtion($id)
 	{
-		# code...
-	}
-
-	public function unfavoriteDevtion($value='')
-	{
-		# code...
+		return Favorite::destroy($id);
 	}
 
 }
