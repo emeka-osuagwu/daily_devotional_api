@@ -17,7 +17,7 @@ class CreateNotesTable extends Migration
             $table->increments('id');
             $table->string('title')->unique();
             $table->string('note', 500);
-            $table->integer('user_id');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
