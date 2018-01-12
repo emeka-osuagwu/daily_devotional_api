@@ -50,8 +50,6 @@ class FavoriteController extends Controller
 	}
 
 
-	
-
 	public function unfavoriteDevtion($id)
 	{
 		$this->favoriteService->unfavoriteDevtion($id);
