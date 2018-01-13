@@ -6,6 +6,12 @@ use App\Models\Favorite;
 
 class FavoriteService
 {
+
+	public function getAll()
+	{
+		return Favorite::all();
+	}
+	
 	public function getFavoritesBy($field, $value)
 	{
 		return Favorite::where($field, $value);

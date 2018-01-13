@@ -19,6 +19,11 @@ class DevotionService
 		return Devotion::all();		
 	}
 
+	public function getPaginated($amount)
+	{
+		return Devotion::paginate($amount);		
+	}
+
 	public function createDevotion($data)
 	{
 		$create = $data->all();
@@ -54,7 +59,7 @@ class DevotionService
 
 	public function deleteDevotion($id)
 	{
-		Devotion::destroy($id);
+		return Devotion::destroy($id);
 	}
 
 	public function bulkUploadDevotion($file, $category)

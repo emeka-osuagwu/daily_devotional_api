@@ -1,0 +1,36 @@
+#input-Default-select{
+    width: 100%;
+    height: 4rem;
+    background: #fff;
+    border-color: #eee;
+}
+
+.panel-white{
+    width: 80%;
+    margin: 0 auto;
+}
+@media (max-width: 990px) { 
+    .panel-white{
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+.page-content-login{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../photos/adam.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.page-content-forget{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../photos/madi-robson-113926.jpg');
+    background-position: top;
+    background-size: cover;
+}
+
+.page-content-register{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../photos/iswanto-arif-394532.jpg');
+    background-position: top;
+    background-size: cover;
+}
+
