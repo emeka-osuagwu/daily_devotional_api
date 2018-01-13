@@ -3,6 +3,7 @@
 @section('title', 'Login')
 
 @section('content')
+	
 	<div class="page-inner">
 		<div id="main-wrapper" class="container">
 			<div class="row m-t-md">

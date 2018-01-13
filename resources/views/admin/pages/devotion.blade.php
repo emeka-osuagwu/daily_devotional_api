@@ -67,7 +67,7 @@
 				                </div>
 				            </div>
 				            <div class="message-options pull-right">
-				                <a href="{{ Url('devotion/' . $devotion->id . '/delete') }}" class="btn btn-default"><i class="fa fa-trash m-r-xs"></i>Delete</a> 
+				                <a class="btn btn-default" onclick="deleteContentAlert({{$devotion->id}}, '{{ Url('devotion/' . $devotion->id . '/delete') }}')"><i class="fa fa-trash m-r-xs"></i>Delete</a> 
 				            </div>
 				        </div>
 				    </div>
