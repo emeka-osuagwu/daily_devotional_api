@@ -34,7 +34,8 @@ class DevotionController extends Controller
 	
 	public function getCreateDevotion(Request $request)
 	{
-		return view('admin.pages.create_devotion');
+		$categories = $this->devotionService->getCategories();
+		return view('admin.pages.create_devotion', compact('categories'));
 	}
 
 	public function postCreateDevotion(Request $request)

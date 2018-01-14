@@ -8,7 +8,7 @@
 			<div class="row m-t-md">
 				@include('admin.includes.contents.devotion_side_nav')
 
-				<form class="col-md-10" action="{{ Url('devotion/create') }}" method="POST">
+				<form class="col-md-10" action="{{ Url('devotion/create') }}" method="POST" enctype="multipart/form-data">
 				    <div class="panel panel-white">
 
 				        <div class="panel-heading clearfix">
@@ -17,14 +17,7 @@
 				        <div class="panel-body">
 				            <div class="form-horizontal">
 
-				            	@if ($errors->any())
-									@foreach ($errors->all() as $error)
-						            	<div class="alert alert-danger alert-dismissible" role="alert">
-		                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-		                                    Oh snap! {{$error}}.
-		                                </div>
-									@endforeach
-				            	@endif
+				            	@include('admin.includes.sections.display_error')
 
 				                <div class="form-group">
 				                    <label for="input-help-block" class="col-sm-2 control-label">Title</label>
@@ -37,6 +30,18 @@
 				                    </div>
 				                </div>
 				                
+				                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Category</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control m-b-sm" required>
+                                            <option>Select Devotion Category</option>
+                                            @foreach($categories as $category)
+                                            	<option value="{{$category->id}}">{{$category->title}}</option>
+                                        	@endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
 				                <div class="form-group">
 				                    <label for="input-help-block" class="col-sm-2 control-label">Bible verse</label>
 				                    <div class="col-sm-10">
@@ -87,6 +92,28 @@
 				                        <input type="text" name="prayer" class="form-control" id="input-help-block" required>
 				                        <p class="help-block">Enter a 
 				                        	<span style="font-weight: bold;">Prayer</span> for this post 
+				                        	<span style="color: red">(Required)</span>.
+				                        </p>
+				                    </div>
+				                </div>
+
+				                <div class="form-group">
+				                    <label for="input-help-block" class="col-sm-2 control-label">Further Reading</label>
+				                    <div class="col-sm-10">
+				                        <input type="text" name="further_reading" class="form-control" id="input-help-block" required>
+				                        <p class="help-block">Enter a 
+				                        	<span style="font-weight: bold;">Further Reading</span> for this post 
+				                        	<span style="color: red">(Required)</span>.
+				                        </p>
+				                    </div>
+				                </div>
+
+				                <div class="form-group">
+				                    <label for="input-help-block" class="col-sm-2 control-label">Cover Image</label>
+				                    <div class="col-sm-10">
+				                        <input type="file" name="further_reading" class="form-control" id="input-help-block" required>
+				                        <p class="help-block">Enter an 
+				                        	<span style="font-weight: bold;">Image</span> for this post 
 				                        	<span style="color: red">(Required)</span>.
 				                        </p>
 				                    </div>

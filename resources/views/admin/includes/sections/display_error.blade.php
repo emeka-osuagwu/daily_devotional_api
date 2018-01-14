@@ -1,16 +1,8 @@
-@foreach($devotions as $devotion)
-	<tr class="unread" style="cursor: pointer;" onclick="window.location='{{ Url('devotion/' . $devotion->id) }}'">
-		<td class="hidden-xs">
-			<span><input type="checkbox" class="checkbox-mail"></span>
-		</td>
-		<td class="hidden-xs">
-			{{$devotion->title}}
-		</td>
-		<td>
-			{{ str_limit($devotion->description, 78, ' (.....)') }}
-		</td>
-		<td>
-			{{$devotion->created_at}}
-		</td>
-	</tr>
-@endforeach
+@if ($errors->any())
+	@foreach ($errors->all() as $error)
+    	<div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            Oh snap! {{$error}}.
+        </div>
+	@endforeach
+@endif
