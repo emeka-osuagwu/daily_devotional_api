@@ -40,6 +40,19 @@ class DevotionController extends Controller
 	{
 		$categories = $this->devotionService->getCategories();
 		return view('admin.pages.create_devotion', compact('categories'));
+	}	
+
+	public function editDevotion($id)
+	{
+		$devotion = $this->devotionService->getDevotionWhere('id', $id)->get()->first();
+		$categories = $this->devotionService->getCategories();
+		return view('admin.pages.edit_devotion', compact('categories', 'devotion'));
+	}
+
+	public function updateDevotion(Request $request)
+	{
+		return $this->devotionService->updateDevotion($request);
+		return $request->all();
 	}
 
 	public function postCreateDevotion(Request $request)

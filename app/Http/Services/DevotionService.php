@@ -51,7 +51,7 @@ class DevotionService
 		return Devotion::whereIn($field, $values);
 	}
 
-	public function updateDevotion($data, $id)
+	public function updateDevotion($data)
 	{
 		$create = $data->all(); 
 
@@ -59,7 +59,7 @@ class DevotionService
 			$create['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
 		}
 
-		return Devotion::where('id', $id)->update($create);
+		return Devotion::where('id', $data['devotion_id'])->update($create);
 	}
 
 	public function deleteDevotion($id)
