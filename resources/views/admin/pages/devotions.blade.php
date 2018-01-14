@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Login')
+@section('title', 'Devotions')
 
 @section('content')
 

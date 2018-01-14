@@ -46,6 +46,18 @@
                                 </div>
 
 				                <div class="form-group">
+	                                <label class="col-sm-2 control-label">Devotion State</label>
+	                                <div class="col-sm-10">
+	                                    <select class="form-control m-b-sm" name="status" required>
+	                                        <option value="">Select Status</option>
+	                                        <option value="active">Active</option>
+	                                        <option value="draft">Save as Draft</option>
+	                                    </select>
+	                                </div>
+	                            </div>
+
+
+				                <div class="form-group">
 				                    <label for="input-help-block" class="col-sm-2 control-label">Bible verse</label>
 				                    <div class="col-sm-10">
 				                        <input type="text" name="bible_verse" value="{{$devotion->bible_verse}}" class="form-control" id="input-help-block" required>

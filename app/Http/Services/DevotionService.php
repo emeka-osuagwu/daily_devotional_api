@@ -53,13 +53,23 @@ class DevotionService
 
 	public function updateDevotion($data)
 	{
-		$create = $data->all(); 
+		$update = [
+			'title' => $data['title'],
+			'body' => $data['body'],
+			'prayer' => $data['prayer'],
+			'confession' => $data['confession'],
+			'bible_verse' => $data['bible_verse'],
+			'description' => $data['description'],
+			'further_reading' => $data['further_reading'],
+			'status' => $data['status']
+		];
 
 		if ($data->has('image')) {
-			$create['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
+			$update['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
 		}
 
-		return Devotion::where('id', $data['devotion_id'])->update($create);
+
+		return Devotion::where('id', $data['devotion_id'])->update($update);
 	}
 
 	public function deleteDevotion($id)
@@ -67,7 +77,36 @@ class DevotionService
 		return Devotion::destroy($id);
 	}
 
-	public function bulkUploadDevotion($file, $category)
+	public function bulkUploadDevotion($file)
+	{
+		Excel::load($file, function($reader) {
+
+			$reader->each(function($sheet) {
+				if ($sheet['title']) {
+					$data = [
+						"type" => 'text',
+						"type" => 'active',
+						"content_url" => trim($sheet['content_url']),
+						"content_id" => null,
+						
+						"title" => trim($sheet['title']),
+						"cover_image" => null,
+						"description" => trim($sheet['description']),
+						"body" => trim($sheet['body']),
+						"confession" => trim($sheet['confession']),
+						"prayer" => trim($sheet['prayer']),
+						"further_reading" => trim($sheet['further_reading']),
+						"bible_verse" => trim($sheet['bible_verse']),
+						
+						"category_id" => rand(1, 2),
+					];
+					Devotion::create($data);
+				}
+			});
+		})->get();
+	}
+
+	public function bulkUploadDefdfvotion($file, $category)
 	{
 		Excel::load($file, function($reader) {
 

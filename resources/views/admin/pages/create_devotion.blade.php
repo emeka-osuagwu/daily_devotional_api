@@ -43,6 +43,16 @@
                                 </div>
 
 				                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Devotion State</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control m-b-sm" name="status" required>
+                                            <option value="active">Active</option>
+                                            <option value="draft">Save as Draft</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+				                <div class="form-group">
 				                    <label for="input-help-block" class="col-sm-2 control-label">Bible verse</label>
 				                    <div class="col-sm-10">
 				                        <input type="text" name="bible_verse" class="form-control" id="input-help-block" required>
@@ -121,7 +131,6 @@
 
 				                <div class="panel-body pull-right">
                                     <button type="submit" class="btn btn-success btn-lg">Save</button>
-                                    <button type="button" class="btn btn-primary btn-lg">Draft</button>
                                 </div>
 
 				            </div>

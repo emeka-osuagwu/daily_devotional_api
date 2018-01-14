@@ -10,6 +10,12 @@
 		</script>
 	@endif
 
+	@if(Session::has('devotion-successful-updated'))
+		<script type="text/javascript">
+			swal("Good job!", "Devotion Updated", "success");
+		</script>
+	@endif
+
 	<div class="page-inner">
 		<div id="main-wrapper" class="container">
 			<div class="row m-t-md">
@@ -18,8 +24,16 @@
 				    <div class="panel panel-white">
 				        <div class="panel-body mailbox-content">
 				            <div class="message-header">
-				                <h3><span>Title:</span> {{ $devotion->title }}</h3>
-				                <p class="message-date">{{$devotion->created_at}}</p>
+				                <h3><span>Title:</span> {{ $devotion->title }}
+				                	@if($devotion->status == 'active')
+				                		<span style="margin-left: 5px;" class="badge badge-success pull-right"> Active Post</span>
+				                	@endif
+				                	@if($devotion->status == 'draft')
+				                		<span style="margin-left: 5px;" class="badge badge-danger pull-right"> Draft Post</span>
+				                	@endif
+				                </h3>
+				                <p class="message-date">{{$devotion->created_at}} </p>
+				                <p class="message-date"><i class="fa fa-inbox"></i></a></p>
 				            </div>
 				            <div class="message-content">
 				                
@@ -62,7 +76,7 @@
 				            </div>
 				            <div class="message-options pull-right">
 				            	<a href="{{ Url('devotion/' . $devotion->id . '/edit') }}" class="btn btn-default"><i class="fa fa-pencil m-r-xs"></i>Edit</a> 
-				                <a class="btn btn-default" onclick="deleteContentAlert({{$devotion->id}}, '{{ Url('devotion/' . $devotion->id . '/delete') }}')"><i class="fa fa-trash m-r-xs"></i>Delete</a> 
+				                <a class="btn btn-danger" onclick="deleteContentAlert({{$devotion->id}}, '{{ Url('devotion/' . $devotion->id . '/delete') }}')"><i class="fa fa-trash m-r-xs"></i>Delete</a> 
 				            </div>
 				        </div>
 				    </div>

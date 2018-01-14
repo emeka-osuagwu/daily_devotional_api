@@ -26,6 +26,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
 $factory->define(App\Models\Devotion::class, function (Faker $faker) {
     return [
         'type' => 'text',
+        'status' => 'active',
         'title' => $faker->name,
         'description' => $faker->text($maxNbChars = 100),
         'body' => $faker->text($maxNbChars = 1000),

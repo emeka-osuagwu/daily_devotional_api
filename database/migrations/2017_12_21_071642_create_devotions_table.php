@@ -17,6 +17,7 @@ class CreateDevotionsTable extends Migration
             $table->increments('id');
 
             $table->enum('type', ['audio', 'video', 'text'])->default('text'); 
+            $table->enum('status', ['draft', 'active', 'today'])->default('active'); 
             $table->string('content_url')->nullable();
             $table->string('content_id')->nullable();
             

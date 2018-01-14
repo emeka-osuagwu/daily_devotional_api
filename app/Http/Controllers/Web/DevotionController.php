@@ -51,8 +51,9 @@ class DevotionController extends Controller
 
 	public function updateDevotion(Request $request)
 	{
-		return $this->devotionService->updateDevotion($request);
-		return $request->all();
+		$this->devotionService->updateDevotion($request);
+		session()->flash('devotion-successful-updated', 'alert');
+		return redirect('devotion/' . $request['devotion_id']);
 	}
 
 	public function postCreateDevotion(Request $request)
@@ -85,5 +86,10 @@ class DevotionController extends Controller
 	{
 		$this->devotionService->deleteDevotion($id);
 		return redirect('devotions');
+	}
+
+	public function postUploadDevotion(Request $request)
+	{
+		return $this->devotionService->bulkUploadDevotion($request->file);
 	}
 }

@@ -23,6 +23,7 @@ class Devotion extends Model
 		'prayer',
 		'further_reading',
 		'bible_verse',
+		'status',
 		
 		'category_id',
 	];
