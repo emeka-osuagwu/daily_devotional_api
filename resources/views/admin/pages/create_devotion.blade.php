@@ -16,11 +16,15 @@
 				        </div>
 				        <div class="panel-body">
 				            <div class="form-horizontal">
-				            	
-				            	<div class="alert alert-danger alert-dismissible" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                    Oh snap! Change a few things up and try submitting again.
-                                </div>
+
+				            	@if ($errors->any())
+									@foreach ($errors->all() as $error)
+						            	<div class="alert alert-danger alert-dismissible" role="alert">
+		                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+		                                    Oh snap! {{$error}}.
+		                                </div>
+									@endforeach
+				            	@endif
 
 				                <div class="form-group">
 				                    <label for="input-help-block" class="col-sm-2 control-label">Title</label>
