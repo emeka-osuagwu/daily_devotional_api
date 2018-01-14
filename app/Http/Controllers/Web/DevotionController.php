@@ -54,7 +54,6 @@ class DevotionController extends Controller
 		$devotion =  $this->devotionService->createDevotion($request);
 		session()->flash('devotion-successful-created', 'alert');
 		return redirect('devotion/' . $devotion->id);
-		
 	}
 
 	public function getDevotions()

@@ -9,6 +9,11 @@ use App\Http\Services\FileUploadService;
 
 class DevotionService
 {
+	function __construct()
+	{
+		$this->fileUploadService = new FileUploadService;
+	}
+
 	/*
 	|--------------------------------------------------------------------------
 	| Devotion
@@ -50,7 +55,7 @@ class DevotionService
 	{
 		$create = $data->all(); 
 
-		if ($data->has('cover_image')) {
+		if ($data->has('image')) {
 			$create['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
 		}
 

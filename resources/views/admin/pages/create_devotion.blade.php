@@ -111,7 +111,7 @@
 				                <div class="form-group">
 				                    <label for="input-help-block" class="col-sm-2 control-label">Cover Image</label>
 				                    <div class="col-sm-10">
-				                        <input type="file" name="image" class="form-control" id="input-help-block" required>
+				                        <input type="file" name="cover_image" class="form-control" id="input-help-block" required>
 				                        <p class="help-block">Enter an 
 				                        	<span style="font-weight: bold;">Image</span> for this post 
 				                        	<span style="color: red">(Required)</span>.
