@@ -7,7 +7,7 @@
 			</a>
 		</div>
 		<div class="logo-box">
-			<a href="index.html" class="logo-text"><span>Decree Your Day</span></a>
+			<a href="{{ Url('/') }}" class="logo-text"><span>Decree Your Day</span></a>
 		</div>
 	</div>
 </div>

@@ -59,4 +59,3 @@
 
 
 <script src="{{ load_asset('js/custom.js') }}"></script>
-<script src="{{ load_asset('js/sweetalert.js') }}"></script>

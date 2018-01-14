@@ -33,7 +33,7 @@ class DevotionService
 		    $create['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
 		}		
 
-		Devotion::create($create);
+		return Devotion::create($create);
 	}
 
 	public function getDevotionWhere($field, $value)

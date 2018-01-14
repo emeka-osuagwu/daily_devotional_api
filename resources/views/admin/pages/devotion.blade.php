@@ -1,8 +1,15 @@
 @extends('admin.master')
 
-@section('title', 'Login')
+@section('title', $devotion->title)
 
 @section('content')
+	
+	@if(Session::has('devotion-successful-created'))
+		<script type="text/javascript">
+			swal("Good job!", "Devotion Created", "success");
+		</script>
+	@endif
+
 	<div class="page-inner">
 		<div id="main-wrapper" class="container">
 			<div class="row m-t-md">

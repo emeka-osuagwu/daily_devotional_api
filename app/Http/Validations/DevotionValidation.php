@@ -10,12 +10,12 @@ class DevotionValidation
 	{	
 		$validator = Validator::make($data, [
 			'title'	=> 'required|unique:devotions|string',
-			'description' => 'required|:devotions|string',
-			'body' => 'required|:devotions|string',
-			'confession' => 'required|:devotions|string',
-			'prayer' => 'required|:devotions|string',
-			'further_reading' => 'required|:devotions|string',
-			'bible_verse' => 'required:devotions|string',
+			'description' => 'required|:devotions|alpha_num',
+			'body' => 'required|:devotions|alpha_num',
+			'confession' => 'required|:devotions|alpha_num',
+			'prayer' => 'required|:devotions|alpha_num',
+			'further_reading' => 'required|:devotions|alpha_num',
+			'bible_verse' => 'required:devotions|alpha_num',
 			'category_id' => 'required:devotions|integer',
 			'cover_image' => 'required_if:section,cover_image|image|mimes:jpg,png,jpeg',
 		]);
@@ -26,7 +26,7 @@ class DevotionValidation
 	public function createDovationCategory($data)
 	{	
 		$validator = Validator::make($data, [
-			'title'	=> 'required|unique:categories|string',
+			'title'	=> 'required|unique:categories|alpha_num',
 			'description' => 'required|string',
 			'cover_image' => 'required_if:section,cover_image|image|mimes:jpg,png,jpeg',
 		]);

@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\Controller;
 use App\Http\Services\UserService;
 use App\Http\Services\FavoriteService;
 use App\Http\Services\DevotionService;
+use App\Http\Services\FileUploadService;
 use App\Http\Validations\DevotionValidation;
 
 class DevotionController extends Controller
@@ -16,6 +17,7 @@ class DevotionController extends Controller
 	protected $userService;
 	protected $favoriteService;
 	protected $devotionService;
+	protected $fileUploadService;
 	protected $devotionValidation;
 
 	public function __construct
@@ -23,12 +25,14 @@ class DevotionController extends Controller
 		UserService $userService,
 		DevotionService $devotionService,
 		FavoriteService $favoriteService,
+		FileUploadService $fileUploadService,
 		DevotionValidation $devotionValidation 
 	)
 	{
 		$this->userService = $userService;
 		$this->favoriteService = $favoriteService;
 		$this->devotionService = $devotionService;
+		$this->fileUploadService = $fileUploadService;
 		$this->devotionValidation = $devotionValidation;
 	}
 	
@@ -47,16 +51,11 @@ class DevotionController extends Controller
 			return back()->withErrors($validator->errors());
 		}
 
-		$this->devotionService->createDovotionCategory($request);
+		$devotion =  $this->devotionService->createDevotion($request);
+		session()->flash('devotion-successful-created', 'alert');
+		return redirect('devotion/' . $devotion->id);
 		
-		$response_data = [
-			'status' => 200,
-			'message' => 'category created'
-		];
-
-		return sendResponse($response_data, 200);
 	}
-
 
 	public function getDevotions()
 	{
