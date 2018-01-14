@@ -21,8 +21,6 @@
 
 <!-- Theme Styles -->
 <link href="{{ load_asset('assets/css/modern.min.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ load_asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css"/>
-
 
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
 <link href="{{ load_asset('assets/plugins/pace-master/themes/blue/pace-theme-flash.css') }}" rel="stylesheet"/>
