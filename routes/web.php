@@ -30,7 +30,9 @@ Route::group(['prefix' => '/'], function () {
 		Route::post('/upload', 'Web\CategoryController@uploadCategory');
 		Route::get('/create', 'Web\CategoryController@createCategory');
 		Route::post('/create', 'Web\CategoryController@postCreateCategory');
+		Route::post('/update', 'Web\CategoryController@postUpdateCreateCategory');
 		Route::get('{id}', 'Web\CategoryController@editCategory');
+		Route::get('{id}/delete', 'Web\CategoryController@deleteCategory');
 	});
 	
 	Route::get('categories', 'Web\CategoryController@getCategories');

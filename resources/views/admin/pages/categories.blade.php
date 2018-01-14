@@ -10,6 +10,12 @@
 		</script>
 	@endif
 
+	@if(Session::has('category-successful-deleted'))
+		<script type="text/javascript">
+			swal("Good job!", "Category Deleted", "success");
+		</script>
+	@endif
+
 	<div class="page-inner">
 		<div id="main-wrapper" class="container">
 			<div class="row m-t-md">

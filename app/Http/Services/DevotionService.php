@@ -167,15 +167,18 @@ class DevotionService
 		return Category::destroy($id);
 	}
 
-	public function updateDevotionCategory($data, $id)
+	public function updateDevotionCategory($data)
 	{
-		$create = $data->all(); 
+		$update = [
+			'title' => $data['title'],
+			'description' => $data['description']
+		];
 
 		if ($data->has('cover_image')) {
-			$create['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
+			$update['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
 		}
 
-		return Category::where('id', $id)->update($create);
+		return Category::where('id', $data['category_id'])->update($update);
 	}
 }
 

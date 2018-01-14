@@ -63,7 +63,7 @@ class DevotionValidation
 
 		$validator = Validator::make($data, [
 			'id' => 'required|integer|exists:categories',
-			'title'	=> 'required_if:section,title|string|unique:categories',
+			'title'	=> 'required_if:section,title|string',
 			'description' => 'required_if:section,description|string',
 			'cover_image' => 'required_if:section,cover_image|image|mimes:jpg,png,jpeg',
 		]);

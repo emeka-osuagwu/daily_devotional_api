@@ -67,10 +67,24 @@ class CategoryController extends Controller
 		return view('admin.pages.edit_category', compact('category'));
 	}
 
+	public function postUpdateCreateCategory(Request $request)
+	{
+		$this->devotionService->updateDevotionCategory($request);
+		session()->flash('category-successful-updated', 'alert');
+		return redirect('category/' . $request['category_id']);
+	}
+
 	public function uploadCategory(Request $request)
 	{
 		$this->devotionService->bulkUploadCategory($request->file);
 		session()->flash('category-successful-uploaded', 'alert');
+		return redirect('categories');
+	}
+
+	public function deleteCategory($id)
+	{
+		$this->devotionService->deleteDevotionCategory($id);
+		session()->flash('category-successful-deleted', 'alert');
 		return redirect('categories');
 	}
 }
