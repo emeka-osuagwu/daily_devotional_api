@@ -106,35 +106,10 @@ class DevotionService
 		})->get();
 	}
 
-	public function bulkUploadDefdfvotion($file, $category)
+	public function bulkUploadCategory($file)
 	{
 		Excel::load($file, function($reader) {
 
-			$reader->each(function($sheet) {
-				if ($sheet['title']) {
-					$data = [
-						"type" => 'text',
-						"content_url" => trim($sheet['content_url']),
-						"content_id" => null,
-						
-						"title" => trim($sheet['title']),
-						"cover_image" => null,
-						"description" => trim($sheet['description']),
-						"body" => trim($sheet['body']),
-						"confession" => trim($sheet['confession']),
-						"prayer" => trim($sheet['prayer']),
-						"further_reading" => trim($sheet['further_reading']),
-						"bible_verse" => trim($sheet['bible_verse']),
-						
-						"category_id" => rand(1, 2),
-					];
-					Devotion::create($data);
-				}
-			});
-		})->get();
-
-		Excel::load($category, function($reader) {
-			// $reader->ignoreEmpty();
 			$reader->each(function($sheet) {
 
 				if ($sheet['title']) {
@@ -144,7 +119,6 @@ class DevotionService
 						"cover_image" => Url('pic') . '/' . trim($sheet['cover_image']) . '.jpeg',
 					];
 					
-					// echo json_encode($data);
 					Category::create($data);
 				}
 			});

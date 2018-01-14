@@ -26,7 +26,7 @@ class DevotionValidation
 	public function createDovationCategory($data)
 	{	
 		$validator = Validator::make($data, [
-			'title'	=> 'required|unique:categories|alpha_num',
+			'title'	=> 'required|unique:categories|string',
 			'description' => 'required|string',
 			'cover_image' => 'required_if:section,cover_image|image|mimes:jpg,png,jpeg',
 		]);

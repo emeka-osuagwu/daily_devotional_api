@@ -25,9 +25,14 @@ Route::group(['prefix' => '/'], function () {
 		Route::get('{id}/edit', 'Web\DevotionController@editDevotion');
 		Route::post('update', 'Web\DevotionController@updateDevotion');
 	});
+	
+	Route::group(['prefix' => 'category'], function () {
+		Route::post('/upload', 'Web\CategoryController@uploadCategory');
+		Route::get('/create', 'Web\CategoryController@createCategory');
+		Route::post('/create', 'Web\CategoryController@postCreateCategory');
+		Route::get('{id}', 'Web\CategoryController@editCategory');
+	});
+	
+	Route::get('categories', 'Web\CategoryController@getCategories');
 
-	Route::post('add', 'Api\UserController@addUser');
-	Route::get('{token}/notes', 'Api\NoteController@getUserNotes');
-	Route::get('{token}/favorite', 'Api\FavoriteController@favoriteDevtions');
-	Route::get('{token}/favorite/delete', 'Api\FavoriteController@unfavoriteDevtion');
 });

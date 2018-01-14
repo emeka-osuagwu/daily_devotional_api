@@ -19,6 +19,7 @@
 			<li class="nav-heading"><span>Navigation</span></li>
 			<li class="{{ (Url(Request()->path()) == Url('/')) ? 'active' : '' }}"><a href="{{ Url('/') }}"><span class="menu-icon icon-speedometer"></span><p>Dashboard</p></a></li>
 			<li class="{{ (Url(Request()->path()) == Url('devotions')) ? 'active' : '' }}"><a href="{{ url('devotions') }}"><span class="menu-icon icon-user"></span><p>Devotions</p></a></li>
+			<li class="{{ (Url(Request()->path()) == Url('categories')) ? 'active' : '' }}"><a href="{{ url('categories') }}"><span class="menu-icon icon-user"></span><p>Categories</p></a></li>
 			<li class="droplink"><a href="#"><span class="menu-icon icon-briefcase"></span><p>UI Kits</p><span class="arrow"></span></a>
 				<ul class="sub-menu">
 					<li><a href="ui-alerts.html">Alerts</a></li>
