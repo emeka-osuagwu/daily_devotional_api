@@ -98,7 +98,7 @@ class DevotionService
 						"further_reading" => trim($sheet['further_reading']),
 						"bible_verse" => trim($sheet['bible_verse']),
 						
-						"category_id" => rand(1, 2),
+						"category_id" => (int) trim($sheet['category_id']),
 					];
 					Devotion::create($data);
 				}
