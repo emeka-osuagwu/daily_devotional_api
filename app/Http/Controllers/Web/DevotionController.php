@@ -90,6 +90,8 @@ class DevotionController extends Controller
 
 	public function postUploadDevotion(Request $request)
 	{
-		return $this->devotionService->bulkUploadDevotion($request->file);
+		$this->devotionService->bulkUploadDevotion($request->file);
+		session()->flash('devotion-successful-uploaded', 'alert');
+		return redirect('devotions');
 	}
 }

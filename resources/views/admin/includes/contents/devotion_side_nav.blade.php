@@ -20,7 +20,7 @@
 </div>
 
 <div style="margin-top: 40px;" class="modal fade upload-dvotion-model" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
-    <form action="{{Url('devotion/upload')}}" method="POST" class="modal-dialog modal-sm">
+    <form action="{{Url('devotion/upload')}}" method="POST" class="modal-dialog modal-sm" enctype="multipart/form-data">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>

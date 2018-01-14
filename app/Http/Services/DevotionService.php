@@ -85,7 +85,7 @@ class DevotionService
 				if ($sheet['title']) {
 					$data = [
 						"type" => 'text',
-						"type" => 'active',
+						"status" => 'active',
 						"content_url" => trim($sheet['content_url']),
 						"content_id" => null,
 						

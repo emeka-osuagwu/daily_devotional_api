@@ -32,8 +32,8 @@
 				                		<span style="margin-left: 5px;" class="badge badge-danger pull-right"> Draft Post</span>
 				                	@endif
 				                </h3>
-				                <p class="message-date">{{$devotion->created_at}} </p>
-				                <p class="message-date"><i class="fa fa-inbox"></i></a></p>
+				                <p class="message-date">{{$devotion->created_at}}</p>
+				                
 				            </div>
 				            <div class="message-content">
 				                
