@@ -12,6 +12,12 @@
                         <div class="login-box">
                             <a href="index.html" style="color: #fff" class="logo-name text-lg text-center">Decree Your Day</a>
                             <form class="m-t-md" action="{{Url('login')}}" method="POST">
+                                @if(Session::has('login-unsuccessful'))
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        Oh snap! Invalid Username or Password
+                                    </div>
+                                @endif
                                 <div class="form-group">
                                     <input type="email" class="form-control" name="email" placeholder="Email" required>
                                 </div>

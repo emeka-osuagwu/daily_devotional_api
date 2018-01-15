@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Web\Controller;
 
@@ -30,10 +31,14 @@ class DashboardController extends Controller
 	
 	public function dashboard()
 	{
+		
+		$today_devotion = $this->devotionService->getDevotionWhere('created_at', Carbon::today())->get();
 		$users = $this->userService->getAllUser();
 		$favorites = $this->favoriteService->getAll();
 		$devotions = $this->devotionService->getAll();
 		$categories = $this->devotionService->getCategories();
+
+		return Carbon::today();
 
 		return view('admin.pages.index', compact('users', 'devotions', 'categories', 'favorites'));
 	}

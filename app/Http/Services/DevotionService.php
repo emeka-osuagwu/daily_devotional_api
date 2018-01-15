@@ -101,6 +101,7 @@ class DevotionService
 						"bible_verse" => trim($sheet['bible_verse']),
 						
 						"category_id" => (int) trim($sheet['category_id']),
+						"created_at" => trim($sheet['time/calendar']),
 					];
 					Devotion::create($data);
 				}
