@@ -12,8 +12,10 @@
 */
 
 Route::group(['prefix' => '/'], function () {
+	
+	Route::get('/login', 'Web\DashboardController@getLogin');
 
-	Route::get('/', 'Web\DashboardController@dashboard');
+	Route::get('/', 'Web\DashboardController@dashboard')->middleware('auth');
 	
 	Route::get('devotions', 'Web\DevotionController@getDevotions');
 	Route::group(['prefix' => 'devotion'], function () {
@@ -36,5 +38,4 @@ Route::group(['prefix' => '/'], function () {
 	});
 	
 	Route::get('categories', 'Web\CategoryController@getCategories');
-
 });
