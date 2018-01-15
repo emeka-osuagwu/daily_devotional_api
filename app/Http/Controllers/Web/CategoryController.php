@@ -61,6 +61,7 @@ class CategoryController extends Controller
 		return redirect('category/' . $category->id);
 	}
 
+
 	public function editCategory($id)
 	{
 		$category = $this->devotionService->getDevotionCategoryWhere('id', $id)->first();
