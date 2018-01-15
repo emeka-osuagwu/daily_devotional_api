@@ -176,8 +176,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
-        JD\Cloudder\CloudderServiceProvider::class
+        Maatwebsite\Excel\ExcelServiceProvider::class
 
 
     ],
