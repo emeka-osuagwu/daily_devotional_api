@@ -63,7 +63,7 @@ class CategoryController extends Controller
 
 	public function editCategory($id)
 	{
-		return $category = $this->devotionService->getDevotionCategoryWhere('id', $id)->first();
+		$category = $this->devotionService->getDevotionCategoryWhere('id', $id)->first();
 		return view('admin.pages.edit_category', compact('category'));
 	}
 

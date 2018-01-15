@@ -67,7 +67,7 @@
 						<div class="panel-heading">
 							<h4 class="panel-title">Recent Users</h4>
 							<div class="panel-control">
-								<a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" class="panel-reload" data-original-title="Reload"><i class="icon-reload"></i></a>
+								<!-- <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" class="panel-reload" data-original-title="Reload"><i class="icon-reload"></i></a> -->
 							</div>
 						</div>
 						<div class="panel-body">
@@ -102,17 +102,32 @@
 				</div>
 
 				<div class="col-lg-8 col-md-6">
-					<div class="panel twitter-box">
+					<div class="panel twitter-box" style="background-image: url('{{ $today_devotion->cover_image ? $today_devotion->cover_image : 'http://ak4.picdn.net/shutterstock/videos/11992334/thumb/1.jpg?i10c=img.resize(height:160)' }}');">
 						<div class="panel-body">
-							<div class="live-tile flip ha" data-mode="flip" data-speed="750" data-delay="3000">
+							<div style="cursor: pointer;" onclick="window.location='{{ Url('devotion/' . $today_devotion->id) }}'" class="live-tile flip ha" data-mode="flip" data-speed="750" data-delay="3000">
 								<span class="tile-title pull-right">Today's Devotion</span>
 								<i class="fa fa-book"></i>
 								<div class="flip-back ha" style="transform: rotateX(360deg); transition: all 750ms ease 0s;">
-									<span class="tile-date">6 April, 2015</span>
+									<span class="tile-date">{{$today_devotion->created_at}}</span>
 									<br>
-									<h2 class="no-m">Sometimes by losing</h2>
+									<h2 class="no-m">{{$today_devotion->title}}</h2>
 		
-									<h5 style="margin-top: 10px;" class="no-m">Sometimes by losing a battle you find a new way to win the war... Sometimes by losing a battle you find a new way to win the war... Sometimes by losing a battle you find a new way to win the war... </h5>
+									<h5 style="margin-top: 10px;" class="no-m">{{$today_devotion->description}}</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel twitter-box" style="background-image: url('{{ $next_day_devotion->cover_image ? $next_day_devotion->cover_image : 'http://ak4.picdn.net/shutterstock/videos/11992334/thumb/1.jpg?i10c=img.resize(height:160)' }}');">
+						<div class="panel-body">
+							<div style="cursor: pointer;" onclick="window.location='{{ Url('devotion/' . $next_day_devotion->id) }}'" class="live-tile flip ha" data-mode="flip" data-speed="750" data-delay="3000">
+								<span class="tile-title pull-right">Tomorrow's Devotion</span>
+								<i class="fa fa-book"></i>
+								<div class="flip-back ha" style="transform: rotateX(360deg); transition: all 750ms ease 0s;">
+									<span class="tile-date">{{$next_day_devotion->created_at}}</span>
+									<br>
+									<h2 class="no-m">{{$next_day_devotion->title}}</h2>
+		
+									<h5 style="margin-top: 10px;" class="no-m">{{$next_day_devotion->description}}</h5>
 								</div>
 							</div>
 						</div>
@@ -138,7 +153,7 @@
 								   <tbody>
 									<th hidden scope="row">{{$count = 1}}</th>
 								   		@foreach($devotions->take(10) as $devotion)
-										   <tr onclick="window.location='{{ Url('devotion/' . $devotion->id) }}'">
+										   <tr style="cursor: pointer;" onclick="window.location='{{ Url('devotion/' . $devotion->id) }}'">
 											   <th scope="row">{{$count++}}</th>
 											   <td>{{$devotion->title}}</td>
 											   <td>{{$devotion->description}}</td>

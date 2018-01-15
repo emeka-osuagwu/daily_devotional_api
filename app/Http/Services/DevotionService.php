@@ -84,7 +84,10 @@ class DevotionService
 		Excel::load($file, function($reader) {
 
 			$reader->each(function($sheet) {
+				
 				if ($sheet['title']) {
+					
+					
 					$data = [
 						"type" => 'text',
 						"status" => 'active',
@@ -101,9 +104,10 @@ class DevotionService
 						"bible_verse" => trim($sheet['bible_verse']),
 						
 						"category_id" => (int) trim($sheet['category_id']),
-						"created_at" => trim($sheet['time/calendar']),
+						"created_at" => $sheet['date'],
 					];
-					Devotion::create($data);
+
+					\DB::table('devotions')->insert($data);
 				}
 			});
 		})->get();

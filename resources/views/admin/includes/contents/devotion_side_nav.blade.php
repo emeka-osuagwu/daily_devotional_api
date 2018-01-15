@@ -12,7 +12,7 @@
 <div class="col-md-2">
 	<ul class="list-unstyled mailbox-nav">
 		<li class="active"><a href="{{Url('/devotions')}}"><i class="fa fa-inbox"></i>Devotions</a></li>
-		<li><a href="#"><i class="fa fa-sign-out"></i>Publish Devotion</a></li>
+		<!-- <li><a href="#"><i class="fa fa-sign-out"></i>Publish Devotion</a></li> -->
 <!-- 		<li><a href="#"><i class="fa fa-sign-out"></i>Active</a></li>
 		<li><a href="#"><i class="fa fa-sign-out"></i>Draft</a></li> -->
 	</ul>
