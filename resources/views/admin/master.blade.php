@@ -10,9 +10,9 @@
         @include('admin.includes.sections.links')
     </head>
     <body class="page-header-fixed compact-menu page-horizontal-bar">
-
+        
         <main class="page-content content-wrap">
-
+            
             @include('admin.includes.sections.main_nav')
 
             @yield('content')

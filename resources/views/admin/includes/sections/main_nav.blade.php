@@ -9,6 +9,31 @@
 		<div class="logo-box">
 			<a href="{{ Url('/') }}" class="logo-text"><span>Decree Your Day</span></a>
 		</div>
+		<div class="search-button">
+			<a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+		</div>
+		<div class="topmenu-outer">
+			<div class="top-menu">
+		
+				<ul class="nav navbar-nav navbar-right">
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
+							<span class="user-name">David<i class="fa fa-angle-down"></i></span>
+							<img class="img-circle avatar" src="assets/images/avatar1.png" width="40" height="40" alt="">
+						</a>
+						<ul class="dropdown-menu dropdown-list" role="menu">
+							<li role="presentation"><a href="profile.html"><i class="fa fa-user"></i>Profile</a></li>
+							<li role="presentation"><a href="calendar.html"><i class="fa fa-calendar"></i>Calendar</a></li>
+							<li role="presentation"><a href="inbox.html"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right">4</span></a></li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation"><a href="lock-screen.html"><i class="fa fa-lock"></i>Lock screen</a></li>
+							<li role="presentation"><a href="login.html"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+						</ul>
+					</li>
+				</ul><!-- Nav -->
+			</div><!-- Top Menu -->
+		</div>
 	</div>
 </div>
 <!-- Navbar -->
@@ -18,8 +43,8 @@
 		<ul class="menu accordion-menu">
 			<li class="nav-heading"><span>Navigation</span></li>
 			<li class="{{ (Url(Request()->path()) == Url('/')) ? 'active' : '' }}"><a href="{{ Url('/') }}"><span class="menu-icon icon-speedometer"></span><p>Dashboard</p></a></li>
-			<li class="{{ (Url(Request()->path()) == Url('devotions')) ? 'active' : '' }}"><a href="{{ url('devotions') }}"><span class="menu-icon icon-user"></span><p>Devotions</p></a></li>
-			<li class="{{ (Url(Request()->path()) == Url('categories')) ? 'active' : '' }}"><a href="{{ url('categories') }}"><span class="menu-icon icon-user"></span><p>Categories</p></a></li>
+			<li class="{{ (Url(Request()->path()) == Url('devotions')) ? 'active' : '' }}"><a href="{{ url('devotions') }}"><span class="fa fa-book"></span><p> Devotions</p></a></li>
+			<li class="{{ (Url(Request()->path()) == Url('categories')) ? 'active' : '' }}"><a href="{{ url('categories') }}"><span class="fa fa-book"></span><p> Categories</p></a></li>
 			<li class="droplink"><a href="#"><span class="menu-icon icon-briefcase"></span><p>UI Kits</p><span class="arrow"></span></a>
 				<ul class="sub-menu">
 					<li><a href="ui-alerts.html">Alerts</a></li>
