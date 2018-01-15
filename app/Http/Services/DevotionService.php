@@ -136,7 +136,7 @@ class DevotionService
 
 	public function findByDate($date)
 	{
-		return Devotion::all();
+		return Devotion::where('created_at', $date);
 	}
 
 	/*
