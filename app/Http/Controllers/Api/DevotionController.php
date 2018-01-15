@@ -209,7 +209,7 @@ class DevotionController extends Controller
 	public function viewDevotionDay($date)
 	{
 		$response_data = [
-			'data' => $this->devotionService->findByDate($date)->get(),
+			'data' => $this->devotionService->findByDate($date)->get()->first(),
 			'status' => 200
 		];
 
