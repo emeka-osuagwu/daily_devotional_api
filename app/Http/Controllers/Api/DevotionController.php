@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 
@@ -25,7 +26,8 @@ class DevotionController extends Controller
 
 	public function getBackInfo()
 	{
-		$devotions = $this->devotionService->getAll()->first();
+
+		$devotions =  $this->devotionService->getDevotionWhere('created_at', Carbon::today())->get()->first();
 		$categories = $this->devotionService->getCategories();
 
 		$response_data = [
@@ -206,6 +208,7 @@ class DevotionController extends Controller
 
 	public function viewDevotionDay($date)
 	{
+		
 		$response_data = [
 			'data' => $this->devotionService->findByDate($date)->take(50)->random(1)->first(),
 			'status' => 200
