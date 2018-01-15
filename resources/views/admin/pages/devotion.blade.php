@@ -31,6 +31,7 @@
 				                	@if($devotion->status == 'draft')
 				                		<span style="margin-left: 5px;" class="badge badge-danger pull-right"> Draft Post</span>
 				                	@endif
+				                	<span style="margin-left: 5px;" class="badge badge-info pull-right">{{$devotion->category->title}}</span>
 				                </h3>
 				                <p class="message-date">{{$devotion->created_at}}</p>
 				                

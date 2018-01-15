@@ -14,7 +14,7 @@
         <main class="page-content content-wrap">
             
             @include('admin.includes.sections.main_nav')
-
+            
             @yield('content')
             
             @include('admin.includes.sections.footer')

@@ -37,9 +37,4 @@ class DashboardController extends Controller
 
 		return view('admin.pages.index', compact('users', 'devotions', 'categories', 'favorites'));
 	}
-
-	public function getLogin()
-	{
-		return view('admin.pages.login');
-	}
 }

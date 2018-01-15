@@ -11,10 +11,12 @@
 |
 */
 
+Route::get('/logout', 'Web\Auth\LoginController@logout');
+Route::get('/login', 'Web\Auth\LoginController@getLogin')->middleware('guest');
+Route::post('/login', 'Web\Auth\LoginController@postLogin')->middleware('guest');
+
 Route::group(['prefix' => '/'], function () {
 	
-	Route::get('/login', 'Web\DashboardController@getLogin');
-
 	Route::get('/', 'Web\DashboardController@dashboard')->middleware('auth');
 	
 	Route::get('devotions', 'Web\DevotionController@getDevotions');

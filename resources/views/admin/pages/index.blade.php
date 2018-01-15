@@ -75,7 +75,7 @@
 								<a href="#">
 									@foreach($users as $user)
 										<div class="inbox-item">
-											<div class="inbox-item-img"><img src="{{ $user->image ? '' : 'assets/images/avatar2.png'}}" class="img-circle" alt=""></div>
+											<div class="inbox-item-img"><img src="{{ $user->image ? $user->image : 'https://www.brewish.net/img/placeholders/userPlaceholder.svg'}}" class="img-circle" alt=""></div>
 											<p class="inbox-item-author">{{$user->name}}</p>
 											<p class="inbox-item-text">{{$user->email}}</p>
 											<p class="inbox-item-date">{{$user->account_type}}</p>
@@ -172,85 +172,25 @@
 								   <thead>
 									   <tr>
 										   <th>#</th>
-										   <th>Project</th>
+										   <th>Title</th>
+										   <th>Description</th>
+										   <th>Image</th>
 										   <th>Status</th>
-										   <th>Manager</th>
-										   <th>Progress</th>
 									   </tr>
 								   </thead>
 								   <tbody>
+									<th hidden scope="row">{{$count = 1}}</th>
+								   	@foreach($devotions->take(10) as $devotion)
 									   <tr>
-										   <th scope="row">452</th>
-										   <td>Mailbox Template</td>
+										   <th scope="row">{{$count++}}</th>
+										   <td>{{$devotion->title}}</td>
+										   <td>{{$devotion->description}}</td>
+										   <td>
+										   		<img src="{{$devotion->cover_image}}">
+										   </td>
 										   <td><span class="label label-info">Pending</span></td>
-										   <td>David Green</td>
-										   <td>
-											   <div class="progress progress-sm">
-												   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-												   </div>
-											   </div>
-										   </td>
 									   </tr>
-									   <tr>
-										   <th scope="row">327</th>
-										   <td>Wordpress Theme</td>
-										   <td><span class="label label-primary">In Progress</span></td>
-										   <td>Sandra Smith</td>
-										   <td>
-											   <div class="progress progress-sm">
-												   <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-												   </div>
-											   </div>
-										   </td>
-									   </tr>
-									   <tr>
-										   <th scope="row">226</th>
-										   <td>Modern Admin Template</td>
-										   <td><span class="label label-success">Finished</span></td>
-										   <td>Chritopher Palmer</td>
-										   <td>
-											   <div class="progress progress-sm">
-												   <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-												   </div>
-											   </div>
-										   </td>
-									   </tr>
-									   <tr>
-										   <th scope="row">178</th>
-										   <td>eCommerce template</td>
-										   <td><span class="label label-danger">Canceled</span></td>
-										   <td>Amily Lee</td>
-										   <td>
-											   <div class="progress progress-sm">
-												   <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-												   </div>
-											   </div>
-										   </td>
-									   </tr>
-									   <tr>
-										   <th scope="row">157</th>
-										   <td>Website PSD</td>
-										   <td><span class="label label-info">Testing</span></td>
-										   <td>Nick Doe</td>
-										   <td>
-											   <div class="progress progress-sm">
-												   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-												   </div>
-											   </div>
-										   </td>
-									   </tr>
-									   <tr>
-										   <th scope="row">157</th>
-										   <td>Fronted Theme</td>
-										   <td><span class="label label-warning">Waiting</span></td>
-										   <td>David Green</td>
-										   <td>
-											   <div class="progress progress-sm">
-												   <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-												   </div>
-											   </div>
-										   </td>
-									   </tr>
+									  @endforeach
 								   </tbody>
 								</table>
 							</div>

@@ -61,7 +61,9 @@ class DevotionService
 			'bible_verse' => $data['bible_verse'],
 			'description' => $data['description'],
 			'further_reading' => $data['further_reading'],
-			'status' => $data['status']
+			'status' => $data['status'],
+			'category_id' => $data['category_id'],
+
 		];
 
 		if ($data->has('image')) {
