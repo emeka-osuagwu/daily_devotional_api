@@ -35,10 +35,10 @@
 <link href="{{ load_asset('assets/plugins/3d-bold-navigation/css/style.css') }}" rel="stylesheet" type="text/css"/>	
 <link href="{{ load_asset('assets/plugins/slidepushmenus/css/component.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ load_asset('assets/plugins/summernote-master/summernote.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ load_asset('assets/plugins/bootstrap-datepicker/css/datepicker3.css') }}" rel="stylesheet" type="text/css"/>
+<!-- <link href="{{ load_asset('assets/plugins/bootstrap-datepicker/css/datepicker3.css') }}" rel="stylesheet" type="text/css"/> -->
 <link href="{{ load_asset('assets/plugins/bootstrap-colorpicker/css/colorpicker.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ load_asset('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ load_asset('assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}" rel="stylesheet" type="text/css"/>
+<!-- <link href="{{ load_asset('assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}" rel="stylesheet" type="text/css"/> -->
 
 <!-- Theme Styles -->
 <link href="{{ load_asset('assets/css/modern.min.css') }}" rel="stylesheet" type="text/css"/>

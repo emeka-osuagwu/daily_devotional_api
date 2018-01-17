@@ -24,6 +24,7 @@ Route::group(['prefix' => '/'], function () {
 		Route::get('create', 'Web\DevotionController@getCreateDevotion');
 		Route::post('create', 'Web\DevotionController@postCreateDevotion');
 		Route::post('upload', 'Web\DevotionController@postUploadDevotion');
+		Route::get('calender_filter', 'Web\DevotionController@getCalenderFilter');
 		Route::get('{id}', 'Web\DevotionController@getDevotion');
 		Route::get('{id}/delete', 'Web\DevotionController@deleteDevotion');
 		Route::get('{id}/edit', 'Web\DevotionController@editDevotion');

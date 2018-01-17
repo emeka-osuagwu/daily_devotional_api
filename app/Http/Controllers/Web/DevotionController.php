@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Web\Controller;
 
@@ -93,5 +94,19 @@ class DevotionController extends Controller
 		$this->devotionService->bulkUploadDevotion($request->file);
 		session()->flash('devotion-successful-uploaded', 'alert');
 		return redirect('devotions');
+	}
+
+	public function getCalenderFilter(Request $request)
+	{
+		$search = false;
+		$devotion = collect([]);
+
+		if ($request->has('date') && $request->date != '' ) 
+		{
+			$search = true;
+			$devotion = $this->devotionService->getDevotionWhere('created_at', $request->date)->get();
+		}
+		
+		return view('admin.pages.devotion_calender', compact('devotion', 'search'));
 	}
 }

@@ -12,7 +12,7 @@
 <div class="col-md-2">
 	<ul class="list-unstyled mailbox-nav">
 		<li class="active"><a href="{{Url('/devotions')}}"><i class="fa fa-inbox"></i>Devotions</a></li>
-		<!-- <li><a href="#"><i class="fa fa-sign-out"></i>Publish Devotion</a></li> -->
+		<li><a href="{{ Url('devotion/calender_filter') }}"><i class="fa fa-sign-out"></i>Calender Filter</a></li>
 <!-- 		<li><a href="#"><i class="fa fa-sign-out"></i>Active</a></li>
 		<li><a href="#"><i class="fa fa-sign-out"></i>Draft</a></li> -->
 	</ul>
@@ -31,6 +31,7 @@
                   <input type="file" name="file" required />
                 </div>
             </div>
+            
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-success">Upload</button>
