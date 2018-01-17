@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->jsonb('location')->nullable();
             
             $table->enum('role', ['admin', 'user'])->default('user');    
+            $table->enum('admin_level', [0, 1])->default(0);    
             $table->enum('profile_status', ['active', 'pending'])->default('pending');    
             $table->enum('account_type', ['regular', 'social_auth'])->default('social_auth');    
             $table->string('platform_name')->nullable();    

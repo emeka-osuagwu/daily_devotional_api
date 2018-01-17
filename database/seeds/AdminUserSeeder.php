@@ -14,7 +14,9 @@ class AdminUserSeeder extends Seeder
     	$create = [
     		'first_name' => 'Admin',
     		'last_name' => 'Admin',
-    		'email' => 'admin@gmail.com',
+            'email' => 'admin@gmail.com',
+            'admin' => 'admin',
+    		'admin_level' => 1,
     		'password' => bcrypt('password'),
     	];
 

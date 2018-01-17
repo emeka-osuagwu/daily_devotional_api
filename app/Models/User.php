@@ -26,6 +26,7 @@ class User extends Authenticatable
         'account_type',
         'platform_name',
         'profile_status', 
+        'admin_level', 
     ];
 
     /**

@@ -43,7 +43,7 @@
 	                            @if(!$devotion->count())
 	                            	<div style="text-align: center; margin-top: 50px;">
 	                            		<p class="fa fa-user" style="font-size: 200px"></p>
-	                            		<p class="" style="font-size: 20px;">Devotion no found for that date</p>
+	                            		<p class="" style="font-size: 20px;">Devotion not found for that date</p>
 	                            	</div>
 	                            @endif
                             @endif
