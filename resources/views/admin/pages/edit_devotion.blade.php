@@ -49,7 +49,6 @@
 	                                <label class="col-sm-2 control-label">Devotion State</label>
 	                                <div class="col-sm-10">
 	                                    <select class="form-control m-b-sm" name="status" required>
-	                                        <option value="">Select Status</option>
 	                                        <option value="active">Active</option>
 	                                        <option value="draft">Save as Draft</option>
 	                                    </select>

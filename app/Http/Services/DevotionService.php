@@ -66,7 +66,7 @@ class DevotionService
 
 		];
 
-		if ($data->has('image')) {
+		if ($data->has('cover_image')) {
 			$update['cover_image'] = $this->fileUploadService->toCloudinary($data->file('cover_image'));
 		}
 
