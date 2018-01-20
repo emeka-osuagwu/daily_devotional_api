@@ -19,26 +19,26 @@ Route::group(['prefix' => '/'], function () {
 	
 	Route::get('/', 'Web\DashboardController@dashboard')->middleware('auth');
 	
-	Route::get('devotions', 'Web\DevotionController@getDevotions');
+	Route::get('devotions', 'Web\DevotionController@getDevotions')->middleware('auth');
 	Route::group(['prefix' => 'devotion'], function () {
-		Route::get('create', 'Web\DevotionController@getCreateDevotion');
-		Route::post('create', 'Web\DevotionController@postCreateDevotion');
-		Route::post('upload', 'Web\DevotionController@postUploadDevotion');
-		Route::get('calender_filter', 'Web\DevotionController@getCalenderFilter');
-		Route::get('{id}', 'Web\DevotionController@getDevotion');
-		Route::get('{id}/delete', 'Web\DevotionController@deleteDevotion');
-		Route::get('{id}/edit', 'Web\DevotionController@editDevotion');
-		Route::post('update', 'Web\DevotionController@updateDevotion');
+		Route::get('create', 'Web\DevotionController@getCreateDevotion')->middleware('auth');
+		Route::post('create', 'Web\DevotionController@postCreateDevotion')->middleware('auth');
+		Route::post('upload', 'Web\DevotionController@postUploadDevotion')->middleware('auth');
+		Route::get('calender_filter', 'Web\DevotionController@getCalenderFilter')->middleware('auth');
+		Route::get('{id}', 'Web\DevotionController@getDevotion')->middleware('auth');
+		Route::get('{id}/delete', 'Web\DevotionController@deleteDevotion')->middleware('auth');
+		Route::get('{id}/edit', 'Web\DevotionController@editDevotion')->middleware('auth');
+		Route::post('update', 'Web\DevotionController@updateDevotion')->middleware('auth');
 	});
 	
 	Route::group(['prefix' => 'category'], function () {
-		Route::post('/upload', 'Web\CategoryController@uploadCategory');
-		Route::get('/create', 'Web\CategoryController@createCategory');
-		Route::post('/create', 'Web\CategoryController@postCreateCategory');
-		Route::post('/update', 'Web\CategoryController@postUpdateCreateCategory');
-		Route::get('{id}', 'Web\CategoryController@editCategory');
-		Route::get('{id}/delete', 'Web\CategoryController@deleteCategory');
+		Route::post('/upload', 'Web\CategoryController@uploadCategory')->middleware('auth');
+		Route::get('/create', 'Web\CategoryController@createCategory')->middleware('auth');
+		Route::post('/create', 'Web\CategoryController@postCreateCategory')->middleware('auth');
+		Route::post('/update', 'Web\CategoryController@postUpdateCreateCategory')->middleware('auth');
+		Route::get('{id}', 'Web\CategoryController@editCategory')->middleware('auth');
+		Route::get('{id}/delete', 'Web\CategoryController@deleteCategory')->middleware('auth');
 	});
 	
-	Route::get('categories', 'Web\CategoryController@getCategories');
+	Route::get('categories', 'Web\CategoryController@getCategories')->middleware('auth');
 });
