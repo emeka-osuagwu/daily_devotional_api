@@ -101,6 +101,7 @@
 					</div>
 				</div>
 
+				@if($devotions->count())
 				<div class="col-lg-8 col-md-6">
 					<div class="panel twitter-box" style="background-image: url('{{ $today_devotion->cover_image ? $today_devotion->cover_image : 'http://ak4.picdn.net/shutterstock/videos/11992334/thumb/1.jpg?i10c=img.resize(height:160)' }}');">
 						<div class="panel-body">
@@ -133,6 +134,7 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="col-lg-12 col-md-12">
 					<div class="panel panel-white">
 						<div class="panel-heading">
@@ -176,6 +178,7 @@
 						</div>
 					</div>
 				</div>
+				@endif
 			</div>
 
 		</div>
