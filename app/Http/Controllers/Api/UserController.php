@@ -55,7 +55,7 @@ class UserController extends Controller
 
 	public function sendFeedback(Request $request)
 	{
-		$user = $this->userService->getUserBy('oauth', $request->user_id);
+		$user = $this->userService->getUserBy('oauth', $request->user_id)->get();
 		$request['user'] = $user->first();
 
 		$this->mailService->sendMessage($request->all());
