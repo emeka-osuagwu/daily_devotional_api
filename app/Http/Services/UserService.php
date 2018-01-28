@@ -18,6 +18,7 @@ class UserService
 
 	public function addUser($data)
 	{
+		
 		$user_check = $this->getUserBy('oauth', $data['oauth'])->get()->count();
 		$check_user_email = $this->getUserBy('email', $data['email'])->get()->count();
 
