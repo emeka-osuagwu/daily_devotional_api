@@ -35,7 +35,7 @@ class UserService
 				'name' => $data['name'],
 				'password' => bcrypt($data['oauth']),
 				'platform_name' => $data['platform_name'],
-				'account_type' => $data['account_type']
+				'account_type' => $data['account_type'],
 				'push_token' => $data['token']
 			];
 
