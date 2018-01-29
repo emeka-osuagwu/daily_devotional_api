@@ -16,13 +16,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'role', 
-        'oauth', 
+        'oauth',
         'image', 
         'email', 
         'location', 
         'password', 
         'last_name', 
         'first_name', 
+        'push_token', 
         'account_type',
         'platform_name',
         'profile_status', 

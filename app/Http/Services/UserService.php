@@ -51,6 +51,28 @@ class UserService
 	        $message->to($data['email'])->subject('Account Activation Link');
 	    });
 	}
+
+	public function addPushToken($data)
+	{
+		$user_check = $this->getUserBy('oauth', $data['oauth'])->get()->count();
+
+		if (!$user_check) 
+		{
+			return 'user not found';
+		}
+		else 
+		{
+			
+			$update = [
+				'push_token' => $data['token']
+			];
+
+			$this->getUserBy('oauth', $data['oauth'])->update($update);
+
+			return "token added";
+		}
+
+	}
 }
 
 ?>
