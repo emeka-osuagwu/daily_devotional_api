@@ -36,6 +36,7 @@ class UserService
 				'password' => bcrypt($data['oauth']),
 				'platform_name' => $data['platform_name'],
 				'account_type' => $data['account_type']
+				'push_token' => $data['token']
 			];
 
 			User::create($create);
