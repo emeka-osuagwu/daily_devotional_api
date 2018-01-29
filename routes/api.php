@@ -60,5 +60,7 @@ Route::group(['prefix' => 'v1'], function () {
 	});
 
 	Route::post('send-notification', 'Api\NotificationController@postSendNotification');
+	
+	Route::get('delete-user/{email}', 'Api\UserController@postDeleteUser');
 
 });
