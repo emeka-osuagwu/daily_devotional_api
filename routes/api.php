@@ -19,6 +19,7 @@ Route::group(['prefix' => 'v1'], function () {
 		Route::get('{token}/notes', 'Api\NoteController@getUserNotes');
 		Route::get('{token}/favorite', 'Api\FavoriteController@favoriteDevtions');
 		Route::get('{token}/favorite/delete', 'Api\FavoriteController@unfavoriteDevtion');
+		Route::post('save_user_push_token', 'Api\UserController@postSaveUserPushToken');
 	});
 	
 	Route::post('send-message', 'Api\UserController@sendFeedback');
@@ -57,5 +58,7 @@ Route::group(['prefix' => 'v1'], function () {
 		Route::post('/', 'Api\PaymentController@welcome');
 		Route::post('varify_transaction', 'Api\PaymentController@varify');
 	});
+
+	Route::post('send-notification', 'Api\NotificationController@postSendNotification');
 
 });

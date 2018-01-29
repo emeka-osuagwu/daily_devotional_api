@@ -67,4 +67,16 @@ class UserController extends Controller
 
 		return sendResponse($response_data, 200);
 	}
+
+	public function postSaveUserPushToken(Request $request)
+	{
+		$response_data = [
+			'status' => 200,
+			'message' => $this->userService->addPushToken($request->all())
+		];
+
+		return sendResponse($response_data, 200);
+	}
+
+	
 }
