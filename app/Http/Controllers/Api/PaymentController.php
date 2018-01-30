@@ -18,14 +18,29 @@ class PaymentController extends Controller
 		$this->paymentService = $paymentService;
 	}
 
-	public function welcome(Request $request)
+	public function initializePayment(Request $request)
 	{
-		return $this->paymentService->emeka($request->all());
-		return "welcome to devotion version 1 api";
+		$response_data = [
+			'data' => $this->paymentService->initializePayment($request->all()),
+			'status' => 200
+		];
+
+		return SendResponse($response_data, 200);
 	}
 
-	public function varify(Request $request)
+	public function addCard($value='')
 	{
-		return $this->paymentService->varifyPayment($request['transaction_reference']);
+		# code...
 	}
+
+	public function saveCardInfo($value='')
+	{
+		# code...
+	}
+
+	public function deleteCard()
+	{
+		# code...
+	}
+
 }

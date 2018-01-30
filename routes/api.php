@@ -55,7 +55,7 @@ Route::group(['prefix' => 'v1'], function () {
 	});
 
 	Route::group(['prefix' => 'payment'], function () {
-		Route::post('/', 'Api\PaymentController@welcome');
+		Route::post('initialize', 'Api\PaymentController@initializePayment');
 		Route::post('varify_transaction', 'Api\PaymentController@varify');
 	});
 

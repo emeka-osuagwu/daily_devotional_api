@@ -40,13 +40,11 @@ class NotificationController extends Controller
 		$notifications = [];
 
 		foreach($users as $key => $value) {
-			
 			$notifications[] = [
 				'to' => $value['push_token'],
 				'title' => $devotion->title,
 				'body' => $devotion->description
 			];
-		
 		}
 
 		return $this->notificationService->emeka($notifications);

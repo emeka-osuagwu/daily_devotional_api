@@ -47,7 +47,7 @@ class PaymentService
 		throw $exception;
 	}
 
-	public function emeka($data)
+	public function initializePayment($data)
 	{
 		return $this->makeRequest('POST', 'transaction/initialize', $data);
 	}	
