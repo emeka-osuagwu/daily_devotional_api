@@ -56,6 +56,7 @@ Route::group(['prefix' => 'v1'], function () {
 
 	Route::group(['prefix' => 'payment'], function () {
 		Route::post('initialize', 'Api\PaymentController@initializePayment');
+		Route::get('initialize_callback', 'Api\PaymentController@initializePaymentCallback');
 		Route::post('varify_transaction', 'Api\PaymentController@varify');
 	});
 

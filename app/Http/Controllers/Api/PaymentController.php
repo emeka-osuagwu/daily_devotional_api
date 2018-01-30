@@ -28,6 +28,11 @@ class PaymentController extends Controller
 		return SendResponse($response_data, 200);
 	}
 
+	public function initializePaymentCallback(Request $request)
+	{
+		return $request->all();
+	}
+
 	public function addCard($value='')
 	{
 		# code...
