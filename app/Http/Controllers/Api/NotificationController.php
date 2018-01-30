@@ -44,7 +44,7 @@ class NotificationController extends Controller
 			$notifications[] = [
 				'to' => $value['push_token'],
 				'title' => $devotion->title,
-				'message' => $devotion->description
+				'body' => $devotion->description
 			];
 		
 		}
