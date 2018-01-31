@@ -20,6 +20,9 @@ class PaymentController extends Controller
 
 	public function initializePayment(Request $request)
 	{
+
+		$request['callback_url'] = Url('/api/v1/payment/initialize_callback');
+
 		$response_data = [
 			'data' => $this->paymentService->initializePayment($request->all()),
 			'status' => 200
@@ -30,22 +33,9 @@ class PaymentController extends Controller
 
 	public function initializePaymentCallback(Request $request)
 	{
-		return $request->all();
+
+		return $this->paymentService->varifyPayment($request->reference);
 	}
 
-	public function addCard($value='')
-	{
-		# code...
-	}
-
-	public function saveCardInfo($value='')
-	{
-		# code...
-	}
-
-	public function deleteCard()
-	{
-		# code...
-	}
 
 }

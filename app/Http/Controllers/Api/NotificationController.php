@@ -47,6 +47,6 @@ class NotificationController extends Controller
 			];
 		}
 
-		return $this->notificationService->emeka($notifications);
+		return $this->notificationService->emeka($request->all());
 	}
 }

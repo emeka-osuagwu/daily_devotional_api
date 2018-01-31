@@ -25,7 +25,7 @@ class PaymentService
 		do 
 		{
 			try {
-				$request = $this->http->request('POST', $this->baseUrl . $endpoint, [
+				$request = $this->http->request($method, $this->baseUrl . $endpoint, [
 					'headers' => [
 						'Accept'       => 'application/json',
 						'Content-Type'  => 'application/json',
@@ -54,7 +54,7 @@ class PaymentService
 
 	public function varifyPayment($data)
 	{
-		return $this->makeRequest('GET', 'transaction/verify/'. $data, $data);
+		return $this->makeRequest('GET', 'transaction/verify/'. $data, []);
 	}
 }
 
