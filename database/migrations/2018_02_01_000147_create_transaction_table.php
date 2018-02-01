@@ -30,7 +30,7 @@ class CreateTransactionTable extends Migration
             $table->string('customer_email');
             
             $table->date('transaction_date');
-            $table->date('transaction_id');
+            $table->integer('transaction_id');
             
             $table->timestamps();
         });

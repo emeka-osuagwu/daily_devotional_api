@@ -23,6 +23,11 @@ class PaymentController extends Controller
 
 		$request['callback_url'] = Url('/api/v1/payment/initialize_callback');
 
+		$request['metadata'] = [
+			"user_id" => $request['user_id'],
+			'user_email' => $request['user_email']
+		];
+
 		$response_data = [
 			'data' => $this->paymentService->initializePayment($request->all()),
 			'status' => 200
@@ -33,8 +38,38 @@ class PaymentController extends Controller
 
 	public function initializePaymentCallback(Request $request)
 	{
+		$payment_response = $this->paymentService->varifyPayment($request->reference);
 
-		return $this->paymentService->varifyPayment($request->reference);
+		if ($payment_response['data']['status'] === 'success' && $payment_response['data']['gateway_response'] === 'Successful') 
+		{
+
+			return $payment_response;
+
+			$transaction = [
+				'user_id' => $payment_response['data']['metadata']['user_id'],
+				
+				'amount' => $payment_response['data']['amount'],
+				'currency' => $payment_response['data']['currency'],
+				'status' => $payment_response['data']['status'],
+				'channel' => $payment_response['data']['channel'],
+				'message' => $payment_response['data']['message'],
+				
+				'payment_refrence' => $payment_response['data']['reference'],
+				'authorization_code' => $payment_response['data']['authorization']['authorization_code'],
+				'customer_code' => $payment_response['data']['customer']['customer_code'],
+				'customer_email' => $payment_response['data']['customer']['email'],
+				
+				'transaction_date' => $payment_response['data']['transaction_date'],
+				'transaction_id' => $payment_response['data']['id'],
+			];
+
+			return $this->paymentService->saveTransaction($transaction);
+		}
+		else 
+		{
+			return 'invalid payment';
+		}
+
 	}
 
 

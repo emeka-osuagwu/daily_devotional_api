@@ -56,6 +56,11 @@ class PaymentService
 	{
 		return $this->makeRequest('GET', 'transaction/verify/'. $data, []);
 	}
+
+	public function saveTransaction($data)
+	{
+		return $data;
+	}
 }
 
 
