@@ -73,6 +73,11 @@ class UserService
 			return "token added";
 		}
 	}
+
+	public function updateSubscriptionToken($user_id, $token)
+	{
+		return User::where('oauth', $user_id)->update(['subscription_token' => $token]);
+	}
 }
 
 ?>

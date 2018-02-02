@@ -3,19 +3,27 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Http\Services\UserService;
 use App\Http\Services\PaymentService;
+use App\Http\Services\SubscriptionService;
 
 class PaymentController extends Controller
 {
 
+	protected $userService;
 	protected $paymentService;
+	protected $subscriptionService;
 
 	function __construct
 	(
-		PaymentService $paymentService
+		UserService $userService,
+		PaymentService $paymentService,
+		SubscriptionService $subscriptionService
 	)
 	{
+		$this->userService = $userService;
 		$this->paymentService = $paymentService;
+		$this->subscriptionService = $subscriptionService;
 	}
 
 	public function initializePayment(Request $request)
@@ -43,6 +51,10 @@ class PaymentController extends Controller
 		if ($payment_response['data']['status'] === 'success' && $payment_response['data']['gateway_response'] === 'Successful') 
 		{
 
+			$active_subscription_id = $this->subscriptionService->activeSubscription()->first();
+
+			$active_subscription = $this->subscriptionService->getSubscriptionBy('id', $active_subscription_id->subscription_id)->get()->first();
+
 			$transaction = [
 				'user_id' => $payment_response['data']['metadata']['user_id'],
 				
@@ -56,11 +68,13 @@ class PaymentController extends Controller
 				'authorization_code' => $payment_response['data']['authorization']['authorization_code'],
 				'customer_code' => $payment_response['data']['customer']['customer_code'],
 				'customer_email' => $payment_response['data']['customer']['email'],
+				'subscription_token' => $active_subscription->subscription_token,
 				
 				'transaction_date' => $payment_response['data']['transaction_date'],
 				'transaction_id' => $payment_response['data']['id'],
 			];
 
+			$this->userService->updateSubscriptionToken($payment_response['data']['metadata']['user_id'], $active_subscription->subscription_token);
 			$this->paymentService->saveTransaction($transaction);
 
 			return redirect('exp://localhost:19000/+authToken=23xbdbb21b3&gsgdsd=dkjsdfj');

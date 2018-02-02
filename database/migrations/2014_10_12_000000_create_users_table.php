@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             
             $table->longText('oauth', 20000)->nullable();
             $table->string('push_token')->nullable();    
+            $table->string('subscription_token')->nullable();    
 
             $table->rememberToken();
             $table->timestamps();

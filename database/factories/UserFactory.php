@@ -58,3 +58,9 @@ $factory->define(App\Models\Subscription::class, function (Faker $faker) {
         'price' => 100 . rand(3, 5) . rand(3, 5) . rand(3, 5) . rand(3, 5)
     ];
 });
+
+$factory->define(App\Models\ActiveSubscription::class, function (Faker $faker) {
+    return [
+        'subscription_id' => rand(1, 8)
+    ];
+});

@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(DevotionSeeder::class);
         $this->call(AdminUserSeeder::class);
         $this->call(SubscriptionSeeder::class);
+        $this->call(CurrentSubscriptionSeeder::class);
     }
 }

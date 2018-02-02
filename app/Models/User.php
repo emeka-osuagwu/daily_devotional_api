@@ -24,10 +24,11 @@ class User extends Authenticatable
         'last_name', 
         'first_name', 
         'push_token', 
+        'admin_level', 
         'account_type',
         'platform_name',
         'profile_status', 
-        'admin_level', 
+        'subscription_token', 
     ];
 
     /**
