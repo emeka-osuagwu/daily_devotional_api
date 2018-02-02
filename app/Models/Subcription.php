@@ -14,6 +14,7 @@ class Subcription extends Model
 		'end_date',
 		'subscription_token',
 		'description',
+		'title',
 		'image'
 	];
 

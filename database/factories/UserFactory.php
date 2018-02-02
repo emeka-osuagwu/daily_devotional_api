@@ -47,3 +47,13 @@ $factory->define(App\Models\Category::class, function (Faker $faker) {
         'cover_image' => $faker->imageUrl('cats')
     ];
 });
+
+$factory->define(App\Models\Subcription::class, function (Faker $faker) {
+    return [
+        'start_date' => \Carbon\Carbon::now(),
+        'end_date' => \Carbon\Carbon::now(),
+        'title' => $faker->name,
+        'description' => $faker->text($maxNbChars = 100),
+        'amount' => 100 . rand(3, 5) . rand(3, 5) . rand(3, 5) . rand(3, 5);
+    ];
+});
