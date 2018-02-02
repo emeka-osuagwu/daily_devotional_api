@@ -12,7 +12,7 @@
 Route::group(['prefix' => 'v1'], function () {
 
 	Route::get('users', 'Api\UserController@getAllUser');
-	Route::get('user/{id}', 'Api\UserController@getUser');
+	Route::get('user/{email}', 'Api\UserController@getUser');
 	
 	Route::group(['prefix' => 'user'], function () {
 		Route::post('add', 'Api\UserController@addUser');

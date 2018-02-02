@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->longText('password', 20000);
             
-            $table->longText('oauth', 20000)->nullable();
+            $table->string('oauth')->nullable();
             $table->string('push_token')->nullable();    
             $table->string('subscription_token')->nullable();    
 

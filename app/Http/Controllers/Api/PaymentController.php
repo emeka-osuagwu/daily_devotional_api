@@ -29,11 +29,17 @@ class PaymentController extends Controller
 	public function initializePayment(Request $request)
 	{
 
+		$active_subscription_id = $this->subscriptionService->activeSubscription()->first();
+		$active_subscription = $this->subscriptionService->getSubscriptionBy('id', $active_subscription_id->subscription_id)->get()->first();
+
 		$request['callback_url'] = Url('/api/v1/payment/initialize_callback');
+
+		$request['amount'] = $active_subscription->price;
 
 		$request['metadata'] = [
 			"user_id" => $request['user_id'],
-			'user_email' => $request['user_email']
+			'user_email' => $request['email'],
+			'subscription_token' => $active_subscription->subscription_token
 		];
 
 		$response_data = [
@@ -46,17 +52,20 @@ class PaymentController extends Controller
 
 	public function initializePaymentCallback(Request $request)
 	{
+
 		$payment_response = $this->paymentService->varifyPayment($request->reference);
 
 		if ($payment_response['data']['status'] === 'success' && $payment_response['data']['gateway_response'] === 'Successful') 
 		{
+
+			$user = $this->userService->getUserBy('email', $payment_response['data']['metadata']['user_email'])->get()->first();
 
 			$active_subscription_id = $this->subscriptionService->activeSubscription()->first();
 
 			$active_subscription = $this->subscriptionService->getSubscriptionBy('id', $active_subscription_id->subscription_id)->get()->first();
 
 			$transaction = [
-				'user_id' => $payment_response['data']['metadata']['user_id'],
+				'user_id' => $user->id,
 				
 				'amount' => $payment_response['data']['amount'],
 				'currency' => $payment_response['data']['currency'],
@@ -77,7 +86,9 @@ class PaymentController extends Controller
 			$this->userService->updateSubscriptionToken($payment_response['data']['metadata']['user_id'], $active_subscription->subscription_token);
 			$this->paymentService->saveTransaction($transaction);
 
-			return redirect('exp://localhost:19000/+authToken=23xbdbb21b3&gsgdsd=dkjsdfj');
+			$user_props = 'user=' . json_encode($user);
+
+			return redirect('exp://localhost:19000/+status=payment_approved');
 		}
 		else 
 		{

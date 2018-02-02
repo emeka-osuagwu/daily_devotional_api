@@ -33,10 +33,10 @@ class UserController extends Controller
 		return sendResponse($response_data, 200);
 	}
 
-	public function getUser($id)
+	public function getUser($email)
 	{
 		$response_data = [
-			'data' => $this->userService->getUserBy('id', $id)->get(),
+			'data' => $this->userService->getUserBy('email', $email)->get(),
 			'status' => 200
 		];
 
@@ -45,12 +45,7 @@ class UserController extends Controller
 
 	public function addUser(Request $request)
 	{
-		$response_data = [
-			'message' => $this->userService->addUser($request->all()),
-			'status' => 200
-		];
-
-		return sendResponse($response_data, 200);
+		return sendResponse($this->userService->addUser($request->all()), 200);
 	}
 
 	public function sendFeedback(Request $request)

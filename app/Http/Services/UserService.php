@@ -19,12 +19,14 @@ class UserService
 	public function addUser($data)
 	{
 		
-		$user_check = $this->getUserBy('oauth', $data['oauth'])->get()->count();
-		$check_user_email = $this->getUserBy('email', $data['email'])->get()->count();
+		$response = [];
 
-		if ($user_check > 0 || $check_user_email > 0) 
+		$check_user_email = $this->getUserBy('email', $data['email'])->get();
+
+		if ($check_user_email->count()) 
 		{
-			return 'user exist';
+			$response['message'] = 'user exits';
+			$response['data'] = $check_user_email->first();
 		}
 		else
 		{
@@ -39,11 +41,14 @@ class UserService
 				'push_token' => $data['token']
 			];
 
-			User::create($create);
-
-			return 'user create';
+			$response['message'] = 'user create';
+			$response['data'] = User::create($create)->first();
 		}
+		
+		$response['status'] = 200;
+		return $response;
 	}
+
 
 	public function sendMessage($data)
 	{
