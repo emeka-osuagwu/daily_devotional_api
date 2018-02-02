@@ -83,7 +83,7 @@ class PaymentController extends Controller
 				'transaction_id' => $payment_response['data']['id'],
 			];
 
-			$this->userService->updateSubscriptionToken($payment_response['data']['metadata']['user_id'], $active_subscription->subscription_token);
+			$this->userService->updateSubscriptionToken($payment_response['data']['metadata']['user_email'], $active_subscription->subscription_token);
 			$this->paymentService->saveTransaction($transaction);
 
 			$user_props = 'user=' . json_encode($user);

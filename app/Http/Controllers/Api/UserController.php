@@ -36,7 +36,7 @@ class UserController extends Controller
 	public function getUser($email)
 	{
 		$response_data = [
-			'data' => $this->userService->getUserBy('email', $email)->get(),
+			'data' => $this->userService->getUserBy('email', $email)->get()->first(),
 			'status' => 200
 		];
 

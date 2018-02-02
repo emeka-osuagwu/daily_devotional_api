@@ -7,33 +7,40 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 
 use App\Http\Services\DevotionService;
+use App\Http\Services\SubscriptionService;
 use App\Http\Validations\DevotionValidation;
 
 class DevotionController extends Controller
 {
 	protected $devotionService;
+	protected $subscriptionService;
 	protected $devotionValidation;
 
 	public function __construct
 	(
 		DevotionService $devotionService,
-		DevotionValidation $devotionValidation 
+		DevotionValidation $devotionValidation,
+		SubscriptionService $subscriptionService
 	)
 	{
 		$this->devotionService = $devotionService;
 		$this->devotionValidation = $devotionValidation;
+		$this->subscriptionService = $subscriptionService;
 	}
 
 	public function getBackInfo()
 	{
-
 		$devotions =  $this->devotionService->getDevotionWhere('created_at', Carbon::today())->get()->first();
 		$categories = $this->devotionService->getCategories();
+
+		$active_subscription_id = $this->subscriptionService->activeSubscription()->first();
+		$active_subscription = $this->subscriptionService->getSubscriptionBy('id', $active_subscription_id->subscription_id)->get()->first();
 
 		$response_data = [
 			'data' => [
 				"active" => $devotions, 
-				"categories" => $categories
+				"categories" => $categories,
+				"active_subscription" => $active_subscription
 			],
 			'status' => 200
 		];

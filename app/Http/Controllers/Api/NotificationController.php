@@ -34,18 +34,18 @@ class NotificationController extends Controller
 
 	public function postSendNotification(Request $request)
 	{
-		$users = $this->userService->getAllUser();
-		$devotion =  $this->devotionService->getAll()->first();
+		// $users = $this->userService->getAllUser();
+		// $devotion =  $this->devotionService->getAll()->first();
 
-		$notifications = [];
+		// $notifications = [];
 
-		foreach($users as $key => $value) {
-			$notifications[] = [
-				'to' => $value['push_token'],
-				'title' => $devotion->title,
-				'body' => $devotion->description
-			];
-		}
+		// foreach($users as $key => $value) {
+		// 	$notifications[] = [
+		// 		'to' => $value['push_token'],
+		// 		'title' => $devotion->title,
+		// 		'body' => $devotion->description
+		// 	];
+		// }
 
 		return $this->notificationService->emeka($request->all());
 	}

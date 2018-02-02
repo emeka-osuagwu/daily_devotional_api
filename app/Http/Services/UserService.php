@@ -21,10 +21,11 @@ class UserService
 		
 		$response = [];
 
-		$check_user_email = $this->getUserBy('email', $data['email'])->get();
+		$check_user_email = $this->getUserBy('email', $data['email']);
 
 		if ($check_user_email->count()) 
 		{
+			$check_user_email->update(['push_token' => $data['token']]);
 			$response['message'] = 'user exits';
 			$response['data'] = $check_user_email->first();
 		}
@@ -79,9 +80,10 @@ class UserService
 		}
 	}
 
-	public function updateSubscriptionToken($user_id, $token)
+	public function updateSubscriptionToken($email, $token)
 	{
-		return User::where('oauth', $user_id)->update(['subscription_token' => $token]);
+		$update = ['first_name' => $token];
+		$this->getUserBy('email', $email)->update($update);
 	}
 }
 
