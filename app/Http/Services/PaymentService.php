@@ -6,6 +6,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 
+use App\Models\Transaction;
+
 class PaymentService
 {
     protected $http;            
@@ -59,7 +61,7 @@ class PaymentService
 
 	public function saveTransaction($data)
 	{
-		return $data;
+		return Transaction::create($data);
 	}
 }
 

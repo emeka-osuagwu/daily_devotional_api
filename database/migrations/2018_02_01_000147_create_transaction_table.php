@@ -22,14 +22,14 @@ class CreateTransactionTable extends Migration
             $table->string('currency');
             $table->string('status');
             $table->string('channel');
-            $table->string('message');
+            $table->string('message')->nullable();
             
             $table->string('payment_refrence');
             $table->string('authorization_code');
             $table->string('customer_code');
             $table->string('customer_email');
             
-            $table->date('transaction_date');
+            $table->string('transaction_date');
             $table->integer('transaction_id');
             
             $table->timestamps();

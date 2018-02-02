@@ -43,8 +43,6 @@ class PaymentController extends Controller
 		if ($payment_response['data']['status'] === 'success' && $payment_response['data']['gateway_response'] === 'Successful') 
 		{
 
-			return $payment_response;
-
 			$transaction = [
 				'user_id' => $payment_response['data']['metadata']['user_id'],
 				
@@ -63,7 +61,9 @@ class PaymentController extends Controller
 				'transaction_id' => $payment_response['data']['id'],
 			];
 
-			return $this->paymentService->saveTransaction($transaction);
+			$this->paymentService->saveTransaction($transaction);
+
+			return redirect('exp://localhost:19000/+authToken=23xbdbb21b3&gsgdsd=dkjsdfj');
 		}
 		else 
 		{

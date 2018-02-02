@@ -72,7 +72,6 @@ class UserService
 
 			return "token added";
 		}
-
 	}
 }
 
