@@ -6,8 +6,11 @@ use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Subcription extends Model
+class Subscription extends Model
 {
+
+	// protected $table = 'subscriptions';
+
 	protected $fillable = [
 		'price',
 		'start_date',
