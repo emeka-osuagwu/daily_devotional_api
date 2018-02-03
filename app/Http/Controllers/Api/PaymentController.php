@@ -88,7 +88,7 @@ class PaymentController extends Controller
 
 			$user_props = 'user=' . json_encode($user);
 
-			return redirect('exp://localhost:19000/+status=payment_approved');
+			return redirect('exp://192.168.8.102:19000/+status=payment_approved');
 		}
 		else 
 		{
