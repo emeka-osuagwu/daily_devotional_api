@@ -82,7 +82,7 @@ class UserService
 
 	public function updateSubscriptionToken($email, $token)
 	{
-		$update = ['first_name' => $token];
+		$update = ['subscription_token' => $token];
 		$this->getUserBy('email', $email)->update($update);
 	}
 }
