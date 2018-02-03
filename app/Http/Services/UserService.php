@@ -43,7 +43,7 @@ class UserService
 			];
 
 			$response['message'] = 'user create';
-			$response['data'] = User::create($create)->first();
+			$response['data'] = User::create($create);
 		}
 		
 		$response['status'] = 200;
