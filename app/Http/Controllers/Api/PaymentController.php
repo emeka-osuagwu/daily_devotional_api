@@ -39,6 +39,7 @@ class PaymentController extends Controller
 		$request['metadata'] = [
 			"user_id" => $request['user_id'],
 			'user_email' => $request['email'],
+			'mobile_url' => $request['mobile_url'],
 			'subscription_token' => $active_subscription->subscription_token
 		];
 
@@ -85,10 +86,8 @@ class PaymentController extends Controller
 
 			$this->userService->updateSubscriptionToken($payment_response['data']['metadata']['user_email'], $active_subscription->subscription_token);
 			$this->paymentService->saveTransaction($transaction);
-
-			$user_props = 'user=' . json_encode($user);
-
-			return redirect('exp://192.168.8.102:19000/+status=payment_approved');
+			
+			return redirect($payment_response['data']['metadata']['mobile_url'] . 'status=payment_approved');
 		}
 		else 
 		{
