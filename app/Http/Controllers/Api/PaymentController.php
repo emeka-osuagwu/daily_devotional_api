@@ -56,6 +56,7 @@ class PaymentController extends Controller
 
 		$payment_response = $this->paymentService->varifyPayment($request->reference);
 
+
 		if ($payment_response['data']['status'] === 'success' && $payment_response['data']['gateway_response'] === 'Successful') 
 		{
 

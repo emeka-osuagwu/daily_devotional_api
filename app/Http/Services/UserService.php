@@ -36,8 +36,6 @@ class UserService
 				'oauth' => $data['oauth'],
 				'image' => $data['image'],
 				'name' => $data['name'],
-				'first_name' => $data['first_name'],
-				'last_name' => $data['last_name'],
 				'password' => bcrypt($data['oauth']),
 				'platform_name' => $data['platform_name'],
 				'account_type' => $data['account_type'],
