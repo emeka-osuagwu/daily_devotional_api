@@ -187,7 +187,7 @@
 
 	<style type="text/css">
 		
-		.twitter-box {
+		.panel.twitter-box {
 			background-position: cover;
 			background-repeat: no-repeat;
 			background-size: cover;
