@@ -10,7 +10,7 @@
 	<ul class="list-unstyled mailbox-nav">
         <li class="{{ (Url(Request()->path()) == Url('subscriptions')) ? 'active' : '' }}"><a href="{{Url('/subscriptions')}}"><i class="fa fa-inbox"></i>Subscriptions</a></li>
         <li class="{{ (Url(Request()->path()) == Url('/subscription/active')) ? 'active' : '' }}"><a href="{{Url('/subscription/active')}}"><i class="fa fa-inbox"></i>Active Subscription</a></li>
-		<li class="{{ (Url(Request()->path()) == Url('/subscription/active/users')) ? 'active' : '' }}"><a href="{{Url('/subscription/activate/users')}}"><i class="fa fa-inbox"></i>Active User Subscription</a></li>
+		<li class="{{ (Url(Request()->path()) == Url('/subscription/activate/users')) ? 'active' : '' }}"><a href="{{Url('/subscription/activate/users')}}"><i class="fa fa-inbox"></i>Active User Subscription</a></li>
 	
 <!-- 		<li><a href="#"><i class="fa fa-sign-out"></i>Active</a></li>
 		<li><a href="#"><i class="fa fa-sign-out"></i>Draft</a></li> -->

@@ -4,9 +4,9 @@
 
 @section('content')
 	
-	@if(Session::has('subscriptions-successful-uploaded'))
+	@if(Session::has('user-activated-successful'))
 		<script type="text/javascript">
-			swal("Good job!", "Subscriptions SuccessFully Created", "success");
+			swal("Good job!", "User Subscription Activated SuccessFully", "success");
 		</script>
 	@endif
 
@@ -19,7 +19,7 @@
 				    <div class="panel panel-white">
 
 				        <div class="panel-heading clearfix">
-				            <h4 class="panel-title">Create Subscription</h4>
+				            <h4 class="panel-title">Active User</h4>
 				        </div>
 				        <div class="panel-body">
 				            <div class="form-horizontal">
@@ -27,12 +27,12 @@
 				            	@include('admin.includes.sections.display_error')
 
 				                <div class="form-group">
-                                    <label class="col-sm-2 control-label">User</label>
+                                    <label class="col-sm-2 control-label">Select User</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control m-b-sm" name="user_id" required>
+                                        <select class="form-control m-b-sm" name="user_email" required>
                                             <option>Select Devotion Category</option>
                                             @foreach($users as $user)
-                                            	<option value="{{$user->id}}">{{$user->name}}</option>
+                                            	<option value="{{$user->email}}">{{$user->name}}</option>
                                         	@endforeach
                                         </select>
                                     </div>

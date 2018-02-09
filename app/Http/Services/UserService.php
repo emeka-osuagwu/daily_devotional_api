@@ -84,6 +84,7 @@ class UserService
 	{
 		$update = ['subscription_token' => $token];
 		$this->getUserBy('email', $email)->update($update);
+		return $this->getUserBy('email', $email)->get();
 	}
 }
 

@@ -19,6 +19,12 @@ class SubscriptionService
 		return ActiveSubscription::all();
 	}
 
+	public function getActiveSubscription()
+	{
+		$active_subscription_id = $this->activeSubscription()->first()->subscription_id;
+		return Subscription::find($active_subscription_id);
+	}
+
 	public function createActiveSubscription($data)
 	{
 		$active_subscription_id = $this->activeSubscription()->first()->id;

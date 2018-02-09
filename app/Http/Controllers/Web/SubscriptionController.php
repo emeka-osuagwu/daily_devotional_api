@@ -95,7 +95,13 @@ class SubscriptionController extends Controller
 
 	public function postActiveUserSubscription(Request $request)
 	{
-		return $request->all();
+		$active_subscription = $this->subscriptionService->getActiveSubscription();
+		$this->userService->updateSubscriptionToken($request->user_email, $active_subscription->subscription_token);
+
+		session()->flash('user-activated-successful', 'alert');
+		
+		return back();
+
 	}
 
 }
