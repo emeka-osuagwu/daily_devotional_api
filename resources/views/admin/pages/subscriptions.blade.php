@@ -48,7 +48,7 @@
 							@foreach($subscriptions as $subscription)
 								<tr class="unread" style="cursor: pointer;">
 									<td class="hidden-xs">{{$subscription->title}}</td>
-									<td>{{formatSubscriptionPrice($subscription->price, 'NG')}}</td>
+									<td>{{$subscription->price}}</td>
 									<td class="hidden-xs">{{$subscription->start_date}}</td>
 									<td class="hidden-xs">{{$subscription->end_date}}</td>
 									<td class="hidden-xs"><Button onclick="window.location='{{ Url('subscription/' . $subscription->id . '/delete') }}'" class="btn btn-success btn-lg"><span class="fa fa-trash"></Button></td>
