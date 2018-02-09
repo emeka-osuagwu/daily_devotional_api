@@ -45,8 +45,6 @@
 <link href="{{ load_asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css"/>
 
 
-
-
 <script src="{{ load_asset('assets/plugins/3d-bold-navigation/js/modernizr.js') }}"></script>
 <script src="{{ load_asset('assets/js/pages/form-elements.js') }}"></script>
 
