@@ -39,6 +39,12 @@ Route::group(['prefix' => '/'], function () {
 		Route::get('{id}', 'Web\CategoryController@editCategory')->middleware('auth');
 		Route::get('{id}/delete', 'Web\CategoryController@deleteCategory')->middleware('auth');
 	});
-	
 	Route::get('categories', 'Web\CategoryController@getCategories')->middleware('auth');
+	
+	
+	Route::group(['prefix' => 'subscription'], function () {
+		Route::get('/create', 'Web\SubscriptionController@getCreateSubscription')->middleware('auth');
+		Route::post('/create', 'Web\SubscriptionController@postCreateSubscription')->middleware('auth');
+	});
+	Route::get('subscriptions', 'Web\SubscriptionController@getSubscriptions')->middleware('auth');
 });

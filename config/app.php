@@ -177,7 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        'JD\Cloudder\CloudderServiceProvider'
+        'JD\Cloudder\CloudderServiceProvider',
+         Propaganistas\LaravelIntl\IntlServiceProvider::class
 
 
     ],

@@ -43,6 +43,7 @@
 			<li class="{{ (Url(Request()->path()) == Url('/')) ? 'active' : '' }}"><a href="{{ Url('/') }}"><span class="menu-icon icon-speedometer"></span><p>Dashboard</p></a></li>
 			<li class="{{ (Url(Request()->path()) == Url('devotions')) ? 'active' : '' }}"><a href="{{ url('devotions') }}"><span class="fa fa-book"></span><p> Devotions</p></a></li>
 			<li class="{{ (Url(Request()->path()) == Url('categories')) ? 'active' : '' }}"><a href="{{ url('categories') }}"><span class="fa fa-book"></span><p> Categories</p></a></li>
+			<li class="{{ (Url(Request()->path()) == Url('subscriptions')) ? 'active' : '' }}"><a href="{{ url('subscriptions') }}"><span class="fa fa-book"></span><p> Subscriptions</p></a></li>
 			<li class="droplink"><a href="#"><span class="menu-icon icon-briefcase"></span><p>UI Kits</p><span class="arrow"></span></a>
 				<ul class="sub-menu">
 					<li><a href="ui-alerts.html">Alerts</a></li>

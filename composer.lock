@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a03f68e78be0fa6bb48f2f6fcb09d7d",
+    "content-hash": "676194f5069d9a9e69cb94aa4894855c",
     "packages": [
         {
             "name": "cloudinary/cloudinary_php",
@@ -57,6 +57,50 @@
                 "sdk"
             ],
             "time": "2017-05-03T14:29:33+00:00"
+        },
+        {
+            "name": "commerceguys/intl",
+            "version": "v0.7.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/commerceguys/intl.git",
+                "reference": "de1435502068393fae4061818e194e4ea61b98d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/commerceguys/intl/zipball/de1435502068393fae4061818e194e4ea61b98d6",
+                "reference": "de1435502068393fae4061818e194e4ea61b98d6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.*",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CommerceGuys\\Intl\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bojan Zivanovic"
+                }
+            ],
+            "description": "Internationalization library powered by CLDR data.",
+            "time": "2017-12-29T00:13:05+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -688,6 +732,71 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "jenssegers/date",
+            "version": "v3.2.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jenssegers/date.git",
+                "reference": "1db4d580d1d45085a48fd4a332697619b9a3851c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jenssegers/date/zipball/1db4d580d1d45085a48fd4a332697619b9a3851c",
+                "reference": "1db4d580d1d45085a48fd4a332697619b9a3851c",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "^1.0",
+                "php": ">=5.4",
+                "symfony/translation": "^2.7|^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0|^5.0|^6.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Jenssegers\\Date\\DateServiceProvider"
+                    ],
+                    "aliases": {
+                        "Date": "Jenssegers\\Date\\Date"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jenssegers\\Date\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jens Segers",
+                    "homepage": "https://jenssegers.com"
+                }
+            ],
+            "description": "A date library to help you work with dates in different languages",
+            "homepage": "https://github.com/jenssegers/date",
+            "keywords": [
+                "carbon",
+                "date",
+                "datetime",
+                "i18n",
+                "laravel",
+                "time",
+                "translation"
+            ],
+            "time": "2017-06-30T11:51:03+00:00"
         },
         {
             "name": "jeremeamia/SuperClosure",
@@ -1485,7 +1594,68 @@
                 "xls",
                 "xlsx"
             ],
+            "abandoned": "phpoffice/phpspreadsheet",
             "time": "2015-05-01T07:00:55+00:00"
+        },
+        {
+            "name": "propaganistas/laravel-intl",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Propaganistas/Laravel-Intl.git",
+                "reference": "80b7b606b4645837249628782eb747c78297024a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Propaganistas/Laravel-Intl/zipball/80b7b606b4645837249628782eb747c78297024a",
+                "reference": "80b7b606b4645837249628782eb747c78297024a",
+                "shasum": ""
+            },
+            "require": {
+                "commerceguys/intl": "^0.7.3",
+                "illuminate/container": ">=5.0,<5.6",
+                "jenssegers/date": "^3.2",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.0",
+                "phpunit/phpunit": "^4.0|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Propaganistas\\LaravelIntl\\IntlServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Propaganistas\\LaravelIntl\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Propaganistas",
+                    "email": "Propaganistas@users.noreply.github.com"
+                }
+            ],
+            "description": "Easy to use internationalization functions for Laravel",
+            "keywords": [
+                "i18n",
+                "internationalization",
+                "intl",
+                "l10n",
+                "laravel"
+            ],
+            "time": "2017-11-21T15:15:06+00:00"
         },
         {
             "name": "psr/container",

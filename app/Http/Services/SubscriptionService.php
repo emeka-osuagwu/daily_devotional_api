@@ -7,6 +7,12 @@ use App\Models\ActiveSubscription;
 
 class SubscriptionService
 {
+
+	public function getAllSubscriptions()
+	{
+		return Subscription::all();
+	}
+
 	public function activeSubscription()
 	{
 		return ActiveSubscription::all();
