@@ -39,4 +39,20 @@ class SubscriptionController extends Controller
 	{
 		return view('admin.pages.create_subscription');
 	}
+
+	public function postCreateSubscription(Request $request)
+	{
+
+		$validator = $this->subscriptionValidation->createSubscription($request->all());
+
+		if ($validator->fails()) 
+		{
+			return back()->withErrors($validator->errors());
+		}
+
+		$this->subscriptionService->createSubscription($request->all());
+		session()->flash('subscriptions-successful-created', 'alert');
+		return redirect('subscriptions');
+
+	}
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use Carbon\Carbon;
 use App\Models\Subscription;
 use App\Models\ActiveSubscription;
 
@@ -16,6 +17,14 @@ class SubscriptionService
 	public function activeSubscription()
 	{
 		return ActiveSubscription::all();
+	}
+
+	public function createSubscription($data)
+	{
+
+		$data['subscription_token'] = bcrypt($data['title'] . $data['start_date'] . Carbon::now());
+
+		return Subscription::create($data);
 	}
 
 	public function getSubscriptionBy($field, $value)

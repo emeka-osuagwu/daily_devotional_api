@@ -3,6 +3,14 @@
 @section('title', 'Create Subscription')
 
 @section('content')
+
+	
+	@if(Session::has('subscriptions-successful-uploaded'))
+		<script type="text/javascript">
+			swal("Good job!", "Subscriptions SuccessFully Created", "success");
+		</script>
+	@endif
+
 	<div class="page-inner">
 		<div id="main-wrapper" class="container">
 			<div class="row m-t-md">
@@ -33,7 +41,7 @@
 				                <div class="form-group">
 				                    <label for="input-help-block" class="col-sm-2 control-label">Amount</label>
 				                    <div class="col-sm-10">
-				                        <input type="number" name="title" class="form-control" id="input-help-block" required>
+				                        <input type="number" name="price" class="form-control" id="input-help-block" required>
 				                        <p class="help-block">Enter an
 				                        	<span style="font-weight: bold;">Amount</span> for this post 
 				                        	<span style="color: red">(Required)</span>.

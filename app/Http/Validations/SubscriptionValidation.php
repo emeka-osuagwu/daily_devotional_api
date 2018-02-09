@@ -11,7 +11,7 @@ class SubscriptionValidation
 		$validator = Validator::make($data, [
 			'title'	=> 'required|unique:devotions|string',
 			'price' => 'required',
-			'start_date' => 'required|:devotions|alpha_num',
+			'start_date' => 'required',
 			'end_date' => 'required',
 		]);
 
