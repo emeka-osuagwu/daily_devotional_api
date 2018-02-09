@@ -10,6 +10,18 @@
 		</script>
 	@endif
 
+	@if(Session::has('cant-delete-active-subscription'))
+		<script type="text/javascript">
+			swal("Opps!", "Can't delete active subscription", "error");
+		</script>
+	@endif
+
+	@if(Session::has('delete-subscription-successful'))
+		<script type="text/javascript">
+			swal("Good job!", "Subscription Deleted", "success");
+		</script>
+	@endif
+
 	@if(Session::has('category-successful-deleted'))
 		<script type="text/javascript">
 			swal("Good job!", "Category Deleted", "success");
@@ -34,11 +46,12 @@
 						</thead>
 						<tbody>
 							@foreach($subscriptions as $subscription)
-								<tr class="unread" style="cursor: pointer;" onclick="window.location='{{ Url('subscription/' . $subscription->id) }}'">
+								<tr class="unread" style="cursor: pointer;">
 									<td class="hidden-xs">{{$subscription->title}}</td>
 									<td>{{formatSubscriptionPrice($subscription->price, 'NG')}}</td>
 									<td class="hidden-xs">{{$subscription->start_date}}</td>
 									<td class="hidden-xs">{{$subscription->end_date}}</td>
+									<td class="hidden-xs"><Button onclick="window.location='{{ Url('subscription/' . $subscription->id . '/delete') }}'" class="btn btn-success btn-lg"><span class="fa fa-trash"></Button></td>
 								</tr>
 							@endforeach
 						</tbody>

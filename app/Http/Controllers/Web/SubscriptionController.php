@@ -53,6 +53,34 @@ class SubscriptionController extends Controller
 		$this->subscriptionService->createSubscription($request->all());
 		session()->flash('subscriptions-successful-created', 'alert');
 		return redirect('subscriptions');
-
 	}
+
+	public function getDeleteSubscription($id)
+	{
+		$acive_subscription = $this->subscriptionService->activeSubscription()->first();
+
+		if ($acive_subscription->subscription_id == $id) 
+		{
+			session()->flash('cant-delete-active-subscription', 'alert');
+			return back();
+		}
+
+		$this->subscriptionService->deleteSubscription($id);
+		session()->flash('delete-subscription-successful', 'alert');
+		return back();
+	}
+
+	public function getActiveSubscription()
+	{
+		$subscriptions = $this->subscriptionService->getAllSubscriptions();
+		return view('admin.pages.select_active_subscription', compact('subscriptions'));
+	}
+
+	public function postActivateSubscription(Request $request)
+	{
+		$this->subscriptionService->createActiveSubscription($request->all());
+		session()->flash('active-subscription-successful-changed', 'alert');
+		return back();
+	}
+
 }

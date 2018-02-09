@@ -19,6 +19,13 @@ class SubscriptionService
 		return ActiveSubscription::all();
 	}
 
+	public function createActiveSubscription($data)
+	{
+		$active_subscription_id = $this->activeSubscription()->first()->id;
+		
+		ActiveSubscription::where('id', $active_subscription_id)->update(['subscription_id' => $data['subscription_id']]);
+	}
+
 	public function createSubscription($data)
 	{
 
@@ -31,6 +38,11 @@ class SubscriptionService
 	{
 		return Subscription::where($field, $value);
 	}	
+
+	public function deleteSubscription($id)
+	{
+		Subscription::destroy($id);
+	}
 }
 
 ?>

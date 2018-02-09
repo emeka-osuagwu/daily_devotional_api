@@ -183,4 +183,14 @@
 
 		</div>
 	</div>
+
+
+	<style type="text/css">
+		
+		.twitter-box {
+			background-position: cover;
+			background-repeat: no-repeat;
+		}
+
+	</style>
 @endsection
