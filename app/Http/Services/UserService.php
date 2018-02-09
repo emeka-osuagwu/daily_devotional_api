@@ -2,10 +2,22 @@
 
 namespace App\Http\Services;
 
+use Excel;
 use App\Models\User;
+use App\Models\Subscription;
+use App\Http\Services\SubscriptionService;
 
 class UserService
 {
+
+	public function __construct
+	(
+		SubscriptionService $subscriptionService
+	)
+	{
+		$this->subscriptionService = $subscriptionService;
+	}
+
 	public function getAllUser()
 	{
 		return User::all();
@@ -18,7 +30,6 @@ class UserService
 
 	public function addUser($data)
 	{
-		
 		$response = [];
 
 		$check_user_email = $this->getUserBy('email', $data['email']);
@@ -69,7 +80,6 @@ class UserService
 		}
 		else 
 		{
-			
 			$update = [
 				'push_token' => $data['token']
 			];
@@ -85,6 +95,28 @@ class UserService
 		$update = ['subscription_token' => $token];
 		$this->getUserBy('email', $email)->update($update);
 		return $this->getUserBy('email', $email)->get();
+	}
+
+	public function bulkActiveUsers($file)
+	{
+		Excel::load($file, function($reader) {
+
+			$reader->each(function($sheet) {
+				
+				if ($sheet['email']) {
+					
+					$user_exist = User::where("email", $sheet['email'])->get();
+
+					if ($user_exist->count() > 0) 
+					{
+						$token = $this->subscriptionService->getActiveSubscription()->subscription_token;
+						$this->updateSubscriptionToken('email', $token);
+					}
+				}
+
+			});
+
+		})->get();
 	}
 }
 

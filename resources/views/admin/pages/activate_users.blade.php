@@ -30,7 +30,7 @@
                                     <label class="col-sm-2 control-label">Select User</label>
                                     <div class="col-sm-10">
                                         <select class="form-control m-b-sm" name="user_email" required>
-                                            <option>Select Devotion Category</option>
+                                            <option value="">Select Devotion Category</option>
                                             @foreach($users as $user)
                                             	<option value="{{$user->email}}">{{$user->name}}</option>
                                         	@endforeach
@@ -39,6 +39,7 @@
                                 </div>
 
 				                <div class="panel-body pull-right">
+                                    <a data-toggle="modal" data-target=".upload-user-model" type="submit" class="btn btn-success btn-lg">Upload to activate</a>
                                     <button type="submit" class="btn btn-success btn-lg">Activate User</button>
                                 </div>
 

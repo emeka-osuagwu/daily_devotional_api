@@ -8,7 +8,6 @@ use App\Models\ActiveSubscription;
 
 class SubscriptionService
 {
-
 	public function getAllSubscriptions()
 	{
 		return Subscription::all();

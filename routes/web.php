@@ -41,7 +41,6 @@ Route::group(['prefix' => '/'], function () {
 	});
 	Route::get('categories', 'Web\CategoryController@getCategories')->middleware('auth');
 	
-	
 	Route::group(['prefix' => 'subscription'], function () {
 		Route::get('/create', 'Web\SubscriptionController@getCreateSubscription')->middleware('auth');
 		Route::post('/create', 'Web\SubscriptionController@postCreateSubscription')->middleware('auth');
@@ -50,6 +49,7 @@ Route::group(['prefix' => '/'], function () {
 		Route::get('{id}/delete', 'Web\SubscriptionController@getDeleteSubscription')->middleware('auth');
 		Route::get('activate/users', 'Web\SubscriptionController@getActiveUserSubscription')->middleware('auth');
 		Route::post('activate/users', 'Web\SubscriptionController@postActiveUserSubscription')->middleware('auth');
+		Route::post('activate/users-upload', 'Web\SubscriptionController@postActiveUserUpload')->middleware('auth');
 	});
 
 	Route::get('subscriptions', 'Web\SubscriptionController@getSubscriptions')->middleware('auth');

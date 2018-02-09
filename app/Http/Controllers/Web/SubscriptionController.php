@@ -104,4 +104,11 @@ class SubscriptionController extends Controller
 
 	}
 
+	public function postActiveUserUpload(Request $request)
+	{
+		$this->userService->bulkActiveUsers($request->file);
+		session()->flash('user-activated-successful', 'alert');
+		return back();
+	}
+
 }
