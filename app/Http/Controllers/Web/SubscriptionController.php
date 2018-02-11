@@ -103,6 +103,7 @@ class SubscriptionController extends Controller
 
 		$notification_data = [
 			"to" => $user->push_token,
+			// "to" => "ExponentPushToken[p5s5frA1mu24HQgSHX9wfZ]",
 			"body" => "Hi " . $user->name . '. You have been rewarded with ' . $active_subscription->title . '.:)',
 			"title" => "Free Subscription Activation",
 			"data" => json_encode([
