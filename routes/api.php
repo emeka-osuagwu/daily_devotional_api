@@ -25,6 +25,7 @@ Route::group(['prefix' => 'v1'], function () {
 	Route::post('send-message', 'Api\UserController@sendFeedback');
 	
 	Route::get('devotions', 'Api\DevotionController@viewDevotions');
+	
 	Route::group(['prefix' => 'devotion'], function () {
 		Route::post('{id}/like', 'Api\FavoriteController@likeDevotion');
 		Route::get('basic/{email}', 'Api\DevotionController@getBackInfo');

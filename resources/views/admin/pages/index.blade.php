@@ -79,7 +79,6 @@
 											<p class="inbox-item-author">{{$user->name}}</p>
 											<p class="inbox-item-text">{{$user->email}}</p>
 
-
 											<p class="inbox-item-date">
 												@if($user->platform_name == 'gmail')
 													<span class="label label-danger">Gmail</span>

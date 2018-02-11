@@ -23,6 +23,6 @@ class Category extends Model
 
 	public function devotions()
 	{
-	    return $this->hasMany('App\Models\Devotion', 'category_id')->take(10);
+	    return $this->hasMany('App\Models\Devotion', 'category_id')->where('created_at', '<', Carbon::now());
 	}
 }
