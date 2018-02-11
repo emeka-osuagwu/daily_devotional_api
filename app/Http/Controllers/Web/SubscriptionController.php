@@ -102,7 +102,7 @@ class SubscriptionController extends Controller
 		$user = $this->userService->updateSubscriptionToken($request->user_email, $active_subscription->subscription_token)->first();
 
 		$notification_data = [
-			"to" => "ExponentPushToken[p5s5frA1mu24HQgSHX9wfZ]",
+			"to" => $user->push_token,
 			"body" => "Hi " . $user->name . '. You have been rewarded with ' . $active_subscription->title . ' free subscription :)',
 			"title" => "Free Subscription Activation",
 			"data" => json_encode(['user' => $user])
