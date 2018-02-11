@@ -103,9 +103,12 @@ class SubscriptionController extends Controller
 
 		$notification_data = [
 			"to" => $user->push_token,
-			"body" => "Hi " . $user->name . '. You have been rewarded with ' . $active_subscription->title . ' free subscription :)',
+			"body" => "Hi " . $user->name . '. You have been rewarded with ' . $active_subscription->title . '.:)',
 			"title" => "Free Subscription Activation",
-			"data" => json_encode(['user' => $user])
+			"data" => json_encode([
+				'user' => $user,
+				'action' => 'free_subscription'
+			])
 		];
 
 		$this->notificationService->emeka($notification_data);
