@@ -101,7 +101,6 @@ class SubscriptionController extends Controller
 		session()->flash('user-activated-successful', 'alert');
 		
 		return back();
-
 	}
 
 	public function postActiveUserUpload(Request $request)

@@ -6,30 +6,35 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\Controller;
 
+use App\Http\Services\UserService;
 use App\Http\Services\DevotionService;
 use App\Http\Services\SubscriptionService;
 use App\Http\Validations\DevotionValidation;
 
 class DevotionController extends Controller
 {
+	protected $userService;
 	protected $devotionService;
 	protected $subscriptionService;
 	protected $devotionValidation;
 
 	public function __construct
 	(
+		UserService $userService,
 		DevotionService $devotionService,
 		DevotionValidation $devotionValidation,
 		SubscriptionService $subscriptionService
 	)
 	{
+		$this->userService = $userService;
 		$this->devotionService = $devotionService;
 		$this->devotionValidation = $devotionValidation;
 		$this->subscriptionService = $subscriptionService;
 	}
 
-	public function getBackInfo()
+	public function getBackInfo($email)
 	{
+		$user = $this->userService->getUserBy('email', $email)->get()->first();
 		$devotions =  $this->devotionService->getDevotionWhere('created_at', Carbon::today())->get()->first();
 		$categories = $this->devotionService->getCategories();
 
@@ -38,6 +43,7 @@ class DevotionController extends Controller
 
 		$response_data = [
 			'data' => [
+				"user" => $user,
 				"active" => $devotions, 
 				"categories" => $categories,
 				"active_subscription" => $active_subscription
