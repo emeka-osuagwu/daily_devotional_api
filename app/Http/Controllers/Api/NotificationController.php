@@ -17,8 +17,8 @@ class NotificationController extends Controller
 
 	protected $userService;
 	protected $favoriteService;
-	protected $notificationService;
 	protected $devotionService;
+	protected $notificationService;
 
 	public function __construct
 	(
@@ -46,6 +46,8 @@ class NotificationController extends Controller
 		// 		'body' => $devotion->description
 		// 	];
 		// }
+
+		$request['data'] = json_encode(['ff' => 1]);
 
 		return $this->notificationService->emeka($request->all());
 	}

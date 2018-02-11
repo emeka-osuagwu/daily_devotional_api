@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\Controller;
 
 use App\Http\Services\UserService;
 use App\Http\Services\DevotionService;
+use App\Http\Services\NotificationService;
 use App\Http\Services\SubscriptionService;
 
 use App\Http\Validations\SubscriptionValidation;
@@ -23,6 +24,7 @@ class SubscriptionController extends Controller
 	(
 		UserService $userService,
 		DevotionService $devotionService,
+		NotificationService $notificationService,
 		SubscriptionService $subscriptionService,
 		SubscriptionValidation $subscriptionValidation
 	)
@@ -30,6 +32,7 @@ class SubscriptionController extends Controller
 		$this->userService = $userService;
 		$this->devotionService = $devotionService;
 		$this->subscriptionService = $subscriptionService;
+		$this->notificationService = $notificationService;
 		$this->subscriptionValidation = $subscriptionValidation;
 	}
 	
@@ -96,7 +99,16 @@ class SubscriptionController extends Controller
 	public function postActiveUserSubscription(Request $request)
 	{
 		$active_subscription = $this->subscriptionService->getActiveSubscription();
-		$this->userService->updateSubscriptionToken($request->user_email, $active_subscription->subscription_token);
+		$user = $this->userService->updateSubscriptionToken($request->user_email, $active_subscription->subscription_token)->first();
+
+		$notification_data = [
+			"to" => $user->push_token,
+			"body" => "Hi " . $user->first_name .' ' . $user->last_name . '. You have been rewarded with ' . $active_subscription->title . ' free subscription :)',
+			"title" => "Free Subscription Activation",
+			"data" => json_encode(['user' => $user])
+		];
+
+		$this->notificationService->emeka($notification_data);
 
 		session()->flash('user-activated-successful', 'alert');
 		
