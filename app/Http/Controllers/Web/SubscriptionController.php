@@ -86,6 +86,27 @@ class SubscriptionController extends Controller
 	public function postActivateSubscription(Request $request)
 	{
 		$this->subscriptionService->createActiveSubscription($request->all());
+
+		$users = $this->userService->getAllUser()->take(2);
+
+		$notifications = [];
+
+		foreach($users as $key => $value) {
+			$notifications[] = [
+				'to' => $value->push_token,
+				// 'to' => "ExponentPushToken[p5s5frA1mu24HQgSHX9wfZ]",
+				'title' => "Devotion Subscription",
+				'body' => "Subscribe for least devotion :)",
+				"data" => json_encode([
+					'action' => 'new_subscription_update',
+					'subscription' => $this->subscriptionService->getActiveSubscription()
+				])
+			];
+		}
+
+		return $notifications;
+
+		$this->notificationService->emeka($notifications);
 		session()->flash('active-subscription-successful-changed', 'alert');
 		return back();
 	}

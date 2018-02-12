@@ -1,12 +1,12 @@
 @extends('admin.master')
 
-@section('title', 'Login')
+@section('title', 'Active Subscription')
 
 @section('content')
 
 	@if(Session::has('active-subscription-successful-changed'))
 		<script type="text/javascript">
-			swal("Opps!", "Active subscription changed", "success");
+			swal("Good job!", "Active subscription changed", "success");
 		</script>
 	@endif
 
