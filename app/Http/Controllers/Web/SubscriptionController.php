@@ -87,7 +87,8 @@ class SubscriptionController extends Controller
 	{
 		$this->subscriptionService->createActiveSubscription($request->all());
 
-		$users = $this->userService->getAllUser();
+		$admin_users_id = $this->userService->getUserBy('role', 'admin')->get()->pluck('id');
+		return $users = $this->userService->getAllUser()->except($admin_users_id->toArray());
 
 		$notifications = [];
 
