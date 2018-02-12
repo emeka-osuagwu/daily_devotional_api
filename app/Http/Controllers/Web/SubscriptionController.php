@@ -87,14 +87,14 @@ class SubscriptionController extends Controller
 	{
 		$this->subscriptionService->createActiveSubscription($request->all());
 
-		$users = $this->userService->getAllUser()->take(2);
+		$users = $this->userService->getAllUser();
 
 		$notifications = [];
 
 		foreach($users as $key => $value) {
 			$notifications[] = [
-				// 'to' => $value->push_token,
-				'to' => "ExponentPushToken[EvxCbHMi4ago2MK_wZQjMd]",
+				'to' => $value->push_token,
+				// 'to' => "ExponentPushToken[EvxCbHMi4ago2MK_wZQjMd]",
 				'title' => "Devotion Subscription",
 				'body' => "Subscribe for least devotion :)",
 				"data" => json_encode([
