@@ -9,7 +9,6 @@ use App\Http\Services\SubscriptionService;
 
 class UserService
 {
-
 	public function __construct
 	(
 		SubscriptionService $subscriptionService
@@ -37,7 +36,7 @@ class UserService
 		if ($check_user_email->count()) 
 		{
 			$check_user_email->update(['push_token' => $data['token']]);
-			$response['message'] = 'user exits';
+			$response['message'] = 'user_exits';
 			$response['data'] = $check_user_email->first();
 		}
 		else
@@ -50,10 +49,9 @@ class UserService
 				'password' => bcrypt($data['oauth']),
 				'platform_name' => $data['platform_name'],
 				'account_type' => $data['account_type'],
-				'push_token' => $data['token']
 			];
 
-			$response['message'] = 'user create';
+			$response['message'] = 'user_created';
 			$response['data'] = User::create($create);
 		}
 		

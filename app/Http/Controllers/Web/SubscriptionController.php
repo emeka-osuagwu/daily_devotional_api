@@ -93,8 +93,8 @@ class SubscriptionController extends Controller
 
 		foreach($users as $key => $value) {
 			$notifications[] = [
-				'to' => $value->push_token,
-				// 'to' => "ExponentPushToken[p5s5frA1mu24HQgSHX9wfZ]",
+				// 'to' => $value->push_token,
+				'to' => "ExponentPushToken[EvxCbHMi4ago2MK_wZQjMd]",
 				'title' => "Devotion Subscription",
 				'body' => "Subscribe for least devotion :)",
 				"data" => json_encode([
@@ -103,8 +103,6 @@ class SubscriptionController extends Controller
 				])
 			];
 		}
-
-		return $notifications;
 
 		$this->notificationService->emeka($notifications);
 		session()->flash('active-subscription-successful-changed', 'alert');
