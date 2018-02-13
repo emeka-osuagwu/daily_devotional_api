@@ -55,7 +55,7 @@ $factory->define(App\Models\Subscription::class, function (Faker $faker) {
         'title' => $faker->name,
         'description' => $faker->text($maxNbChars = 100),
         'subscription_token' => bcrypt($faker->name),
-        'price' => 100 . rand(3, 5) . rand(3, 5) . rand(3, 5) . rand(3, 5)
+        'price' => 1
     ];
 });
 

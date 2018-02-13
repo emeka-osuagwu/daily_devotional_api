@@ -56,8 +56,7 @@ class PaymentController extends Controller
 
 		$payment_response = $this->paymentService->varifyPayment($request->reference);
 
-
-		if ($payment_response['data']['status'] === 'success' && $payment_response['data']['gateway_response'] === 'Successful') 
+		if ($payment_response['data']['status'] === 'success' || $payment_response['data']['gateway_response'] === 'Successful' || $payment_response['data']['gateway_response'] === 'Approved') 
 		{
 
 			$user = $this->userService->getUserBy('email', $payment_response['data']['metadata']['user_email'])->get()->first();
