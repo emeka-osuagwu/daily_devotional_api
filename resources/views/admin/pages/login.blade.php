@@ -30,10 +30,10 @@
                             <p style="color: #fff" class="text-center m-t-xs text-sm">2018 &copy; Developed by CarbonTech.</p>
                         </div>
                     </div>
-                </div><!-- Row -->
-            </div><!-- Main Wrapper -->
-        </div><!-- Page Inner -->
-    </main><!-- Page Content -->
+                </div>
+            </div>
+        </div>
+    </main>
     
 
 @endsection
