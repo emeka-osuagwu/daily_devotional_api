@@ -31,7 +31,7 @@ class UserService
 	{
 		$response = [];
 
-		$check_user_email = $this->getUserBy('email', $data['email']);
+		$check_user_email = $this->getUserBy('oauth', $data['oauth']);
 
 		if ($check_user_email->count()) 
 		{

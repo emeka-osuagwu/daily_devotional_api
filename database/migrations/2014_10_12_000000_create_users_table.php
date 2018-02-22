@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->enum('account_type', ['regular', 'social_auth'])->default('social_auth');    
             $table->string('platform_name')->nullable();    
             
-            $table->string('email')->unique();
+            $table->string('email');
             $table->longText('password', 20000);
             
             $table->string('oauth')->nullable();

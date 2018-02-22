@@ -3,7 +3,6 @@
 @section('title', 'Login')
 
 @section('content')
-
     <main class="page-content">
         <div class="page-inner page-content-login">
             <div id="main-wrapper">
@@ -35,5 +34,4 @@
         </div>
     </main>
     
-
 @endsection
