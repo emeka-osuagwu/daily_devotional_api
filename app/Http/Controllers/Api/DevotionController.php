@@ -32,9 +32,9 @@ class DevotionController extends Controller
 		$this->subscriptionService = $subscriptionService;
 	}
 
-	public function getBackInfo($email)
+	public function getBackInfo($id)
 	{
-		$user = $this->userService->getUserBy('email', $email)->get()->first();
+		$user = $this->userService->getUserBy('id', $id)->get()->first();
 		$devotions =  $this->devotionService->getDevotionWhere('created_at', Carbon::today())->get()->first();
 		$categories = $this->devotionService->getCategories();
 

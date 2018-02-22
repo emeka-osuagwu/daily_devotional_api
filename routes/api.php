@@ -16,7 +16,7 @@ Route::group(['prefix' => 'v1'], function () {
 	
 	Route::group(['prefix' => 'user'], function () {
 		Route::post('add', 'Api\UserController@addUser');
-		Route::get('{token}/notes', 'Api\NoteController@getUserNotes');
+		Route::get('{id}/notes', 'Api\NoteController@getUserNotes');
 		Route::get('{token}/favorite', 'Api\FavoriteController@favoriteDevtions');
 		Route::get('{token}/favorite/delete', 'Api\FavoriteController@unfavoriteDevtion');
 		Route::post('save_user_push_token', 'Api\UserController@postSaveUserPushToken');
@@ -63,6 +63,6 @@ Route::group(['prefix' => 'v1'], function () {
 
 	Route::post('send-notification', 'Api\NotificationController@postSendNotification');
 	
-	Route::get('delete-user/{email}', 'Api\UserController@postDeleteUser');
+	Route::get('delete-user/{id}', 'Api\UserController@postDeleteUser');
 
 });

@@ -63,9 +63,9 @@ class UserController extends Controller
 		return sendResponse($response_data, 200);
 	}
 
-	public function postDeleteUser($email)
+	public function postDeleteUser($id)
 	{
-		$this->userService->getUserBy('email', $email)->delete();
+		$this->userService->getUserBy('id', $id)->delete();
 		return 'done';
 	}
 

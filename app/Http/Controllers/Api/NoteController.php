@@ -51,10 +51,10 @@ class NoteController extends Controller
 		return sendResponse($response_data, 200);
 	}
 
-	public function getUserNotes($token)
+	public function getUserNotes($id)
 	{
 		$response_data = [
-			'data' => $this->noteService->getNoteBy('user_id', $token)->get(),
+			'data' => $this->noteService->getNoteBy('user_id', $id)->get(),
 			'status' => 200
 		];
 

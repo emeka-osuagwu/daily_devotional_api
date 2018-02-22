@@ -9,7 +9,7 @@ class NoteValidation
 	public function createNote($data)
 	{	
 		$validator = Validator::make($data, [
-			'title'	=> 'required|unique:notes|string',
+			'title'	=> 'required|string',
 			'note' => 'required|string',
 			'user_id' => 'required',
 		]);
