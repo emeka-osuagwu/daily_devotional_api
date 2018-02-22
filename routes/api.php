@@ -12,7 +12,7 @@
 Route::group(['prefix' => 'v1'], function () {
 
 	Route::get('users', 'Api\UserController@getAllUser');
-	Route::get('user/{email}', 'Api\UserController@getUser');
+	Route::get('user/{id}', 'Api\UserController@getUser');
 	
 	Route::group(['prefix' => 'user'], function () {
 		Route::post('add', 'Api\UserController@addUser');
@@ -28,7 +28,7 @@ Route::group(['prefix' => 'v1'], function () {
 	
 	Route::group(['prefix' => 'devotion'], function () {
 		Route::post('{id}/like', 'Api\FavoriteController@likeDevotion');
-		Route::get('basic/{email}', 'Api\DevotionController@getBackInfo');
+		Route::get('basic/{id}', 'Api\DevotionController@getBackInfo');
 		Route::get('categories', 'Api\DevotionController@viewDevotionCategories');
 		Route::get('{id}', 'Api\DevotionController@viewDevotion');
 		Route::get('date/{date}', 'Api\DevotionController@viewDevotionDay');
@@ -64,5 +64,7 @@ Route::group(['prefix' => 'v1'], function () {
 	Route::post('send-notification', 'Api\NotificationController@postSendNotification');
 	
 	Route::get('delete-user/{id}', 'Api\UserController@postDeleteUser');
+	Route::post('update-user-push-token', 'Api\UserController@updatePushToken');
+	Route::get('update-user-helper/{id}/{field}/{value}', 'Api\UserController@updateUserHelper');
 
 });

@@ -59,7 +59,7 @@ class PaymentController extends Controller
 		if ($payment_response['data']['status'] === 'success' || $payment_response['data']['gateway_response'] === 'Successful' || $payment_response['data']['gateway_response'] === 'Approved') 
 		{
 
-			$user = $this->userService->getUserBy('email', $payment_response['data']['metadata']['user_email'])->get()->first();
+			$user = $this->userService->getUserBy('id', $payment_response['data']['metadata']['user_id'])->get()->first();
 
 			$active_subscription_id = $this->subscriptionService->activeSubscription()->first();
 
@@ -84,7 +84,7 @@ class PaymentController extends Controller
 				'transaction_id' => $payment_response['data']['id'],
 			];
 
-			$this->userService->updateSubscriptionToken($payment_response['data']['metadata']['user_email'], $active_subscription->subscription_token);
+			$this->userService->updateSubscriptionToken($payment_response['data']['metadata']['user_id'], $active_subscription->subscription_token);
 			$this->paymentService->saveTransaction($transaction);
 			
 			return redirect($payment_response['data']['metadata']['mobile_url'] . 'status=payment_approved');

@@ -35,7 +35,6 @@ class UserService
 
 		if ($check_user_email->count()) 
 		{
-			$check_user_email->update(['push_token' => $data['token']]);
 			$response['message'] = 'user_exits';
 			$response['data'] = $check_user_email->first();
 		}
@@ -59,7 +58,6 @@ class UserService
 		return $response;
 	}
 
-
 	public function sendMessage($data)
 	{
 	    Mail::send('emails.user.reset_password_link', ['data' => $data], function ($message) use ($data) {
@@ -68,9 +66,9 @@ class UserService
 	    });
 	}
 
-	public function addPushToken($data)
+	public function updatePushToken($data)
 	{
-		$user_check = $this->getUserBy('oauth', $data['oauth'])->get()->count();
+		$user_check = $this->getUserBy('id', $data['id'])->get()->count();
 
 		if (!$user_check) 
 		{
@@ -79,20 +77,20 @@ class UserService
 		else 
 		{
 			$update = [
-				'push_token' => $data['token']
+				'push_token' => $data['push_token']
 			];
 
-			$this->getUserBy('oauth', $data['oauth'])->update($update);
+			$this->getUserBy('id', $data['id'])->update($update);
 
 			return "token added";
 		}
 	}
 
-	public function updateSubscriptionToken($email, $token)
+	public function updateSubscriptionToken($id, $token)
 	{
 		$update = ['subscription_token' => $token];
-		$this->getUserBy('email', $email)->update($update);
-		return $this->getUserBy('email', $email)->get();
+		$this->getUserBy('id', $id)->update($update);
+		return $this->getUserBy('id', $id)->get();
 	}
 
 	public function bulkActiveUsers($file)
@@ -115,6 +113,16 @@ class UserService
 			});
 
 		})->get();
+	}
+
+	public function updateUserHeler($id, $f, $v)
+	{
+
+		$update = [
+			$f => $v
+		];
+
+		return $this->getUserBy('id', $id)->update($update);
 	}
 }
 

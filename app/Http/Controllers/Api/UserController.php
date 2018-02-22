@@ -33,10 +33,10 @@ class UserController extends Controller
 		return sendResponse($response_data, 200);
 	}
 
-	public function getUser($email)
+	public function getUser($id)
 	{
 		$response_data = [
-			'data' => $this->userService->getUserBy('email', $email)->get()->first(),
+			'data' => $this->userService->getUserBy('id', $id)->get()->first(),
 			'status' => 200
 		];
 
@@ -69,5 +69,19 @@ class UserController extends Controller
 		return 'done';
 	}
 
+	public function updatePushToken(Request $request)
+	{
+		$response_data = [
+			'data' => $this->userService->updatePushToken($request->all()),
+			'status' => 200
+		];
+
+		return sendResponse($response_data, 200);
+	}
+
+	public function updateUserHelper($id, $f, $v)
+	{
+		return $this->userService->updateUserHeler($id, $f, $v);
+	}
 	
 }
