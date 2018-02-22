@@ -29,7 +29,7 @@
 				                <div class="form-group">
                                     <label class="col-sm-2 control-label">Select User</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control m-b-sm" name="user_email" required>
+                                        <select class="form-control m-b-sm" name="user_id" required>
                                             <option value="">Select Devotion Category</option>
                                             @foreach($users as $user)
                                             	<option value="{{$user->id}}">{{$user->name}}</option>
