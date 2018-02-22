@@ -119,7 +119,7 @@ class SubscriptionController extends Controller
 	public function postActiveUserSubscription(Request $request)
 	{
 		$active_subscription = $this->subscriptionService->getActiveSubscription();
-		$user = $this->userService->updateSubscriptionToken($request->user_email, $active_subscription->subscription_token)->first();
+		$user = $this->userService->updateSubscriptionToken($request->user_id, $active_subscription->subscription_token)->first();
 
 		$notification_data = [
 			"to" => $user->push_token,

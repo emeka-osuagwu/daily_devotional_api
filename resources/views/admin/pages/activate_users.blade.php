@@ -32,7 +32,7 @@
                                         <select class="form-control m-b-sm" name="user_email" required>
                                             <option value="">Select Devotion Category</option>
                                             @foreach($users as $user)
-                                            	<option value="{{$user->email}}">{{$user->name}}</option>
+                                            	<option value="{{$user->id}}">{{$user->name}}</option>
                                         	@endforeach
                                         </select>
                                     </div>
