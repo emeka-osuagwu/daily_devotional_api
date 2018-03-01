@@ -7,20 +7,25 @@ use App\Http\Controllers\Api\Controller;
 
 use App\Http\Services\UserService;
 use App\Http\Services\MailService;
+use App\Http\Services\SocialiteService;
+use Laravel\Socialite\Facades\Socialite;
 
 class UserController extends Controller
 {
 	protected $userService;
 	protected $mailService;
+	protected $socialiteService;
 
 	public function __construct
 	(
 		UserService $userService,
-		MailService $mailService
+		MailService $mailService,
+		SocialiteService $socialiteService
 	)
 	{
 		$this->userService = $userService;
 		$this->mailService = $mailService;
+		$this->socialiteService = $socialiteService;
 	}
 
 	public function getAllUser()
@@ -82,6 +87,17 @@ class UserController extends Controller
 	public function updateUserHelper($id, $f, $v)
 	{
 		return $this->userService->updateUserHeler($id, $f, $v);
+	}
+
+	public function socialLogin($platform)
+	{
+	   return $this->socialiteService->redirect($platform);
+	}
+
+	public function socialLoginCallback($platform, Request $request)
+	{
+		$user = collect(Socialite::driver( $platform )->user());
+		return $user;
 	}
 	
 }

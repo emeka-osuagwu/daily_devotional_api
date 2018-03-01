@@ -27,6 +27,7 @@
                                 <a href="forgot.html" style="color: #fff" class="display-block text-center m-t-md text-sm">Forgot Password?</a>
                             </form>
                             <p style="color: #fff" class="text-center m-t-xs text-sm">2018 &copy; Developed by CarbonTech.</p>
+                            <a href="{{ Url('login/google')}}">fvjdfjh</a>
                         </div>
                     </div>
                 </div>

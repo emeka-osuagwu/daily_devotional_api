@@ -11,6 +11,6 @@ class SubscriptionSeeder extends Seeder
      */
     public function run()
     {
-    	factory('App\Models\Subscription', 10)->create();
+    	factory('App\Models\Subscription', 1)->create();
     }
 }

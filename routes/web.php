@@ -11,6 +11,11 @@
 |
 */
 
+
+Route::get('login/{platform}', 'Api\UserController@socialLogin');
+Route::get('login/{platform}/callback', 'Api\UserController@socialLoginCallback');
+
+
 Route::get('/logout', 'Web\Auth\LoginController@logout');
 Route::get('/login', 'Web\Auth\LoginController@getLogin')->middleware('guest');
 Route::post('/login', 'Web\Auth\LoginController@postLogin')->middleware('guest');

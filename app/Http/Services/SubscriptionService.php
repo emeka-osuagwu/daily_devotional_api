@@ -34,7 +34,10 @@ class SubscriptionService
 	public function createSubscription($data)
 	{
 
-		$data['subscription_token'] = bcrypt($data['title'] . $data['start_date'] . Carbon::now());
+		return $create = [
+			"price" => $data['price'] * 10,
+			"subscription_token" => bcrypt($data['title'] . $data['start_date'] . Carbon::now())
+		];
 
 		return Subscription::create($data);
 	}

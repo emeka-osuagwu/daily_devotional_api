@@ -67,4 +67,7 @@ Route::group(['prefix' => 'v1'], function () {
 	Route::post('update-user-push-token', 'Api\UserController@updatePushToken');
 	Route::get('update-user-helper/{id}/{field}/{value}', 'Api\UserController@updateUserHelper');
 
+	Route::get('login/{platform}', 'Api\UserController@socialLogin');
+	Route::get('login/{platform}/callback', 'Api\UserController@socialLoginCallback');
+
 });
