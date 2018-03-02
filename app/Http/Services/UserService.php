@@ -22,6 +22,11 @@ class UserService
 		return User::all();
 	}
 
+	public function getAdminUsers()
+	{
+		return User::where('role', 'admin');
+	}
+
 	public function getUserBy($field, $value)
 	{
 		return User::where($field, $value);
