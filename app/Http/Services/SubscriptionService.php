@@ -34,12 +34,15 @@ class SubscriptionService
 	public function createSubscription($data)
 	{
 
-		return $create = [
-			"price" => $data['price'] * 10,
+		$create = [
+			"title" => $data['title'],
+			"price" => $data['price'] * 100,
+			"start_date" => $data['start_date'],
+			"end_date" => $data['end_date'],
 			"subscription_token" => bcrypt($data['title'] . $data['start_date'] . Carbon::now())
 		];
 
-		return Subscription::create($data);
+		return Subscription::create($create);
 	}
 
 	public function getSubscriptionBy($field, $value)

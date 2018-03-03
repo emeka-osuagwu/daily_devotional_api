@@ -57,7 +57,7 @@ class SubscriptionController extends Controller
 			return back()->withErrors($validator->errors());
 		}
 
-		return $this->subscriptionService->createSubscription($request->all());
+		$this->subscriptionService->createSubscription($request->all());
 		session()->flash('subscriptions-successful-created', 'alert');
 		return redirect('subscriptions');
 	}
