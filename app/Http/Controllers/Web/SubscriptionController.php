@@ -93,16 +93,21 @@ class SubscriptionController extends Controller
 		$notifications = [];
 
 		foreach($users as $key => $value) {
-			$notifications[] = [
-				'to' => $value->push_token,
-				// 'to' => "ExponentPushToken[EvxCbHMi4ago2MK_wZQjMd]",
-				'title' => "Devotion Subscription",
-				'body' => "Subscribe for least devotion :)",
-				"data" => json_encode([
-					'action' => 'new_subscription_update',
-					'subscription' => $this->subscriptionService->getActiveSubscription()
-				])
-			];
+
+			if ($value->push_token == '' || $value->push_token == null) {
+				$notifications[] = [
+					'to' => $value->push_token,
+					// 'to' => "ExponentPushToken[EvxCbHMi4ago2MK_wZQjMd]",
+					'title' => "Devotion Subscription",
+					'body' => "Subscribe for least devotion :)",
+					"data" => json_encode([
+						'action' => 'new_subscription_update',
+						'subscription' => $this->subscriptionService->getActiveSubscription()
+					])
+				];
+			}
+
+
 		}
 
 		$this->notificationService->emeka($notifications);
