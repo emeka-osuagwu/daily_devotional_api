@@ -38,7 +38,7 @@ class CategoryController extends Controller
 	
 	public function getCategories($value='')
 	{
-		$categories = $this->devotionService->getCategories();
+		return $categories = $this->devotionService->getCategories();
 		return view('admin.pages.categories', compact('categories'));
 	}
 
