@@ -31,8 +31,8 @@ class DashboardController extends Controller
 	
 	public function dashboard()
 	{
-		$today_devotion = $this->devotionService->getDevotionWhere('created_at', Carbon::today())->get()->first();
-		$next_day_devotion = $this->devotionService->getDevotionWhere('created_at', Carbon::tomorrow())->get()->first();
+		return $today_devotion = $this->devotionService->getDevotionWhere('created_at', Carbon::today())->get()->first() ?? $this->devotionService->getDevotionWhere('id', rand(1, 10))->get()->first();
+		$next_day_devotion = $this->devotionService->getDevotionWhere('created_at', Carbon::tomorrow())->get()->first() ?? $this->devotionService->getDevotionWhere('id', rand(1, 10))->get()->first();
 		$users = $this->userService->getAllUser();
 		$favorites = $this->favoriteService->getAll();
 		$devotions = $this->devotionService->getAll();
