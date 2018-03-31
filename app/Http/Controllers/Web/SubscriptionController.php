@@ -94,7 +94,7 @@ class SubscriptionController extends Controller
 
 		foreach($users as $key => $value) {
 
-			if ($value->push_token == '' || $value->push_token == null) {
+			if (!$value->push_token == '' || !$value->push_token == null) {
 				$notifications[] = [
 					'to' => $value->push_token,
 					// 'to' => "ExponentPushToken[EvxCbHMi4ago2MK_wZQjMd]",
@@ -106,7 +106,6 @@ class SubscriptionController extends Controller
 					])
 				];
 			}
-
 
 		}
 

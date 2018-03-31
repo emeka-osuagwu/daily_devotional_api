@@ -87,7 +87,6 @@ class DevotionService
 				
 				if ($sheet['title']) {
 					
-					
 					$data = [
 						"type" => 'text',
 						"status" => 'active',
