@@ -103,7 +103,7 @@
 				                <div class="form-group">
 				                    <label for="input-help-block" class="col-sm-2 control-label">Prayer</label>
 				                    <div class="col-sm-10">
-				                        <input type="text" name="prayer" value={{$devotion->prayer}} class="form-control" id="input-help-block" required>
+				                    <input type="" value="{{$devotion->prayer}}" name="prayer" class="form-control">
 				                        <p class="help-block">Enter a 
 				                        	<span style="font-weight: bold;">Prayer</span> for this post 
 				                        	<span style="color: red">(Required)</span>.
