@@ -179,7 +179,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         'JD\Cloudder\CloudderServiceProvider',
-         Propaganistas\LaravelIntl\IntlServiceProvider::class
+        Propaganistas\LaravelIntl\IntlServiceProvider::class,
+        Laravel\Cashier\CashierServiceProvider::class
 
 
     ],

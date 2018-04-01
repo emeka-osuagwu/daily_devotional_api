@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Cashier\Cashier;
 
 class Subscription extends Model
 {
@@ -17,6 +18,12 @@ class Subscription extends Model
 		'title',
 		'image'
 	];
+
+	public function getPriceAttribute($value)
+	{
+		Cashier::useCurrency('usd', '₦');
+	    return Cashier::formatAmount($value);
+	}
 
 	public function getCreatedAtAttribute($value)
 	{
