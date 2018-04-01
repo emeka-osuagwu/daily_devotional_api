@@ -19,7 +19,7 @@ class Subscription extends Model
 		'image'
 	];
 
-	public function getPriceAttribute($value)
+	public function convertPrice($value)
 	{
 		Cashier::useCurrency('usd', '₦');
 	    return Cashier::formatAmount($value);

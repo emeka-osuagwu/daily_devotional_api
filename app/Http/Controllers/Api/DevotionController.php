@@ -40,6 +40,7 @@ class DevotionController extends Controller
 
 		$active_subscription_id = $this->subscriptionService->activeSubscription()->first();
 		$active_subscription = $this->subscriptionService->getSubscriptionBy('id', $active_subscription_id->subscription_id)->get()->first();
+		$active_subscription['price'] = $active_subscription->convertPrice($active_subscription['price']);
 
 		$response_data = [
 			'data' => [
